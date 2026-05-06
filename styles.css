@@ -48,10 +48,23 @@ body {
   margin: 0;
   color: var(--text);
   background:
-    radial-gradient(circle at top left, rgba(0, 175, 157, 0.16), transparent 28rem),
-    radial-gradient(circle at 85% 12%, rgba(255, 200, 40, 0.16), transparent 20rem),
+    radial-gradient(
+      circle at top left,
+      rgba(0, 175, 157, 0.16),
+      transparent 28rem
+    ),
+    radial-gradient(
+      circle at 85% 12%,
+      rgba(255, 200, 40, 0.16),
+      transparent 20rem
+    ),
     var(--bg);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   font-size: 1rem;
   line-height: 1.55;
 }
@@ -139,11 +152,9 @@ button {
 
 .brand-logo {
   display: grid;
-  width: 3rem;
-  height: 3rem;
+  width: 6rem;
   place-items: center;
   border-radius: 1rem;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: #ffffff;
   font-size: 0.78rem;
   font-weight: 800;
@@ -536,8 +547,7 @@ fieldset {
   border-radius: var(--radius-lg);
   padding: clamp(1.15rem, 4vw, 2rem);
   background:
-    linear-gradient(135deg, rgba(0, 175, 157, 0.08), transparent 42%),
-    #ffffff;
+    linear-gradient(135deg, rgba(0, 175, 157, 0.08), transparent 42%), #ffffff;
 }
 
 .scenario-label {
@@ -871,4 +881,11 @@ select[aria-invalid="true"] {
   #result-step {
     display: block !important;
   }
+}
+
+#accueil,
+#definition,
+#jouer,
+#checklist {
+  scroll-margin-top: 6rem;
 }
