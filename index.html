@@ -1,321 +1,495 @@
 <!doctype html>
 <html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Le Rush QVCT — Fresque interactive du management sous pression</title>
-  <meta name="description" content="Une fresque interactive QVCT pour sensibiliser les professionnels du CHR au management sous pression, aux risques terrain et aux réflexes de prévention.">
-  <link rel="stylesheet" href="styles.css">
-</head>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Le Rush QVCT — Fresque interactive du management sous pression
+    </title>
+    <meta
+      name="description"
+      content="Une fresque interactive QVCT pour sensibiliser les professionnels du CHR au management sous pression, aux risques terrain et aux réflexes de prévention."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<body>
-  <a class="skip-link" href="#contenu">Aller au contenu principal</a>
+  <body>
+    <a class="skip-link" href="#contenu">Aller au contenu principal</a>
 
-  <header class="site-header" role="banner">
-    <div class="container header-inner">
-      <a class="brand" href="#accueil" aria-label="Retour à l’accueil">
-        <span class="brand-logo" aria-hidden="true">Logo</span>
-        <span>
-          <strong>After All</strong>
-          <small>QVCT & CHR</small>
-        </span>
-      </a>
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a class="brand" href="#accueil" aria-label="Retour à l’accueil">
+          <span class="brand-logo" aria-hidden="true">Logo</span>
+          <span>
+            <strong>After All</strong>
+            <small>QVCT & CHR</small>
+          </span>
+        </a>
 
-      <nav class="header-nav" aria-label="Navigation principale">
-        <a href="#definition">QVCT</a>
-        <a href="#jouer">Jouer</a>
-        <a href="#checklist">Checklist</a>
-      </nav>
-    </div>
-  </header>
+        <nav class="header-nav" aria-label="Navigation principale">
+          <a href="#definition">QVCT</a>
+          <a href="#jouer">Jouer</a>
+          <a href="#checklist">Checklist</a>
+        </nav>
+      </div>
+    </header>
 
-  <main id="contenu">
-    <section id="accueil" class="hero section">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <p class="eyebrow">Semaine pour la QVCT 2026 · 15 au 19 juin</p>
-          <h1>Le Rush QVCT : la fresque interactive du management sous pression</h1>
-          <p class="hero-lead">
-            En moins de 5 minutes, explorez des situations concrètes du CHR, prenez des décisions de management
-            et repartez avec un diagnostic QVCT utile pour votre établissement.
-          </p>
+    <main id="contenu">
+      <section id="accueil" class="hero section">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <p class="eyebrow">Semaine pour la QVCT 2026 · 15 au 19 juin</p>
+            <h1>
+              Le Rush QVCT : la fresque interactive du management sous pression
+            </h1>
+            <p class="hero-lead">
+              En moins de 5 minutes, explorez des situations concrètes du CHR,
+              prenez des décisions de management et repartez avec un diagnostic
+              QVCT utile pour votre établissement.
+            </p>
 
-          <div class="hero-actions">
-            <a class="button button-primary" href="#jouer" data-start-link>Commencer la fresque</a>
-            <a class="button button-secondary" href="#definition">Comprendre la QVCT</a>
+            <div class="hero-actions">
+              <a class="button button-primary" href="#jouer" data-start-link
+                >Commencer la fresque</a
+              >
+              <a class="button button-secondary" href="#definition"
+                >Comprendre la QVCT</a
+              >
+            </div>
+
+            <ul class="hero-points" aria-label="Points clés de la fresque">
+              <li>Parcours court</li>
+              <li>Score personnalisé</li>
+              <li>Synthèse imprimable</li>
+            </ul>
           </div>
 
-          <ul class="hero-points" aria-label="Points clés de la fresque">
-            <li>Parcours court</li>
-            <li>Score personnalisé</li>
-            <li>Synthèse imprimable</li>
-          </ul>
+          <aside class="hero-card" aria-label="Résumé du jeu">
+            <div class="rush-badge" aria-hidden="true">Rush</div>
+            <h2>
+              Votre service tient-il grâce à l’organisation… ou malgré elle ?
+            </h2>
+            <p>
+              Rush, fatigue, tensions, pauses, sécurité, intégration,
+              incivilités : chaque choix révèle un réflexe managérial et un
+              enjeu QVCT.
+            </p>
+            <div class="mini-meter" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+          </aside>
         </div>
+      </section>
 
-        <aside class="hero-card" aria-label="Résumé du jeu">
-          <div class="rush-badge" aria-hidden="true">Rush</div>
-          <h2>Votre service tient-il grâce à l’organisation… ou malgré elle ?</h2>
-          <p>
-            Rush, fatigue, tensions, pauses, sécurité, intégration, incivilités :
-            chaque choix révèle un réflexe managérial et un enjeu QVCT.
-          </p>
-          <div class="mini-meter" aria-hidden="true">
-            <span></span><span></span><span></span>
+      <section id="definition" class="section definition-section">
+        <div class="container two-columns">
+          <div>
+            <p class="eyebrow">Définition rapide</p>
+            <h2>La QVCT, concrètement ?</h2>
           </div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="definition" class="section definition-section">
-      <div class="container two-columns">
-        <div>
-          <p class="eyebrow">Définition rapide</p>
-          <h2>La QVCT, concrètement ?</h2>
-        </div>
-        <p class="definition-box">
-          La QVCT, c’est la qualité de vie et des conditions de travail : elle vise à améliorer à la fois le
-          bien-être des équipes, l’organisation du travail, la prévention des risques et la performance durable
-          de l’établissement.
-        </p>
-      </div>
-    </section>
-
-    <section id="jouer" class="section game-shell" aria-labelledby="game-title">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Fresque interactive</p>
-          <h2 id="game-title">Choisissez votre terrain CHR</h2>
-          <p>
-            Les situations seront adaptées à votre type d’établissement. Si vous hésitez, choisissez
-            “autre établissement CHR”.
-          </p>
-        </div>
-
-        <div id="app" class="app-card">
-          <section id="sector-step" class="step-panel" aria-labelledby="sector-title">
-            <h3 id="sector-title">Votre secteur</h3>
-            <form id="sector-form" class="sector-form">
-              <fieldset>
-                <legend class="sr-only">Sélectionnez un type d’établissement</legend>
-
-                <div class="sector-grid" id="sector-options">
-                  <label class="sector-option">
-                    <input type="radio" name="sector" value="restaurant" required>
-                    <span>Restaurant / brasserie</span>
-                  </label>
-
-                  <label class="sector-option">
-                    <input type="radio" name="sector" value="hotel">
-                    <span>Hôtellerie</span>
-                  </label>
-
-                  <label class="sector-option">
-                    <input type="radio" name="sector" value="bar">
-                    <span>Café / bar</span>
-                  </label>
-
-                  <label class="sector-option">
-                    <input type="radio" name="sector" value="collective">
-                    <span>Restauration collective</span>
-                  </label>
-
-                  <label class="sector-option">
-                    <input type="radio" name="sector" value="rapide">
-                    <span>Restauration rapide</span>
-                  </label>
-
-                  <label class="sector-option">
-                    <input type="radio" name="sector" value="autre">
-                    <span>Autre établissement CHR</span>
-                  </label>
-                </div>
-              </fieldset>
-
-              <p id="sector-error" class="form-error" role="alert" hidden>
-                Veuillez choisir un secteur pour lancer la fresque.
-              </p>
-
-              <button class="button button-primary" type="submit">Lancer le parcours</button>
-            </form>
-          </section>
-
-          <section id="question-step" class="step-panel" aria-labelledby="question-title" hidden>
-            <div class="progress-block" aria-label="Progression">
-              <div class="progress-meta">
-                <span id="progress-text">Question 1 sur 7</span>
-                <span id="current-score">Score provisoire : 0</span>
-              </div>
-              <div class="progress-track" aria-hidden="true">
-                <span id="progress-bar"></span>
-              </div>
-            </div>
-
-            <div class="question-card" aria-live="polite" aria-atomic="true">
-              <p class="scenario-label" id="scenario-tag">Situation terrain</p>
-              <h3 id="question-title" tabindex="-1">Question</h3>
-              <p id="question-scene" class="question-scene"></p>
-              <p id="question-qvct" class="qvct-link"></p>
-
-              <div id="choices" class="choices" role="group" aria-labelledby="question-title"></div>
-
-              <div id="feedback" class="feedback" role="status" aria-live="polite" hidden></div>
-
-              <div class="question-actions">
-                <button id="next-question" class="button button-primary" type="button" hidden>Continuer</button>
-                <button id="restart-from-question" class="button button-ghost" type="button">Recommencer</button>
-              </div>
-            </div>
-          </section>
-
-          <section id="result-step" class="step-panel result-panel" aria-labelledby="result-title" hidden>
-            <p class="eyebrow">Diagnostic final</p>
-            <h3 id="result-title" tabindex="-1">Votre score QVCT</h3>
-
-            <div class="score-card" aria-live="polite">
-              <div class="score-circle">
-                <span id="final-score">0</span>
-                <small>/100</small>
-              </div>
-              <div>
-                <h4 id="score-level">Niveau</h4>
-                <p id="score-message"></p>
-              </div>
-            </div>
-
-            <div id="summary-print-area" class="summary-grid">
-              <article class="summary-card">
-                <h4>Forces repérées</h4>
-                <ul id="strengths-list"></ul>
-              </article>
-
-              <article class="summary-card">
-                <h4>Points de vigilance</h4>
-                <ul id="watch-list"></ul>
-              </article>
-
-              <article class="summary-card summary-card-wide">
-                <h4>3 actions prioritaires dès demain</h4>
-                <ol id="actions-list"></ol>
-              </article>
-            </div>
-
-            <div class="result-actions">
-              <button id="print-summary" class="button button-secondary" type="button">Imprimer ma synthèse</button>
-              <button id="restart-game" class="button button-ghost" type="button">Recommencer</button>
-            </div>
-          </section>
-        </div>
-      </div>
-    </section>
-
-    <section id="checklist" class="section lead-section" aria-labelledby="lead-title">
-      <div class="container lead-grid">
-        <div>
-          <p class="eyebrow">Ressource gratuite</p>
-          <h2 id="lead-title">Recevoir la checklist : Manager un service sous pression — 10 réflexes QVCT pour le CHR</h2>
-          <p>
-            Vous avez terminé la fresque. Pour garder une trace concrète de vos résultats, vous pouvez recevoir
-            gratuitement la checklist des 10 réflexes QVCT à appliquer en établissement CHR.
-          </p>
-          <p class="privacy-note">
-            Vos informations sont transmises à l’équipe administrative d’After All afin de vous envoyer la ressource
-            et, si vous l’avez accepté, de vous recontacter au sujet de la QVCT. Vous pouvez demander l’accès,
-            la modification ou la suppression de vos données.
-            <a href="#" aria-label="Lire la politique de confidentialité, lien à remplacer">Politique de confidentialité</a>
-          </p>
-        </div>
-
-        <form id="lead-form" class="lead-form" novalidate>
-          <!--
-            BRANCHEMENT GOOGLE FORMS
-            1. Dans script.js, renseignez GOOGLE_FORMS_ACTION_URL avec l’URL de réponse du formulaire.
-            2. Remplacez les attributs name ci-dessous par les entry IDs Google Forms.
-               Exemple : name="entry.123456789"
-            3. Tant que l’URL n’est pas renseignée, aucun envoi réel n’est effectué.
-          -->
-
-          <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
-          <div id="form-errors" class="form-errors" role="alert" aria-live="assertive" tabindex="-1" hidden></div>
-
-          <div class="form-grid">
-            <div class="field">
-              <label for="firstName">Prénom <span aria-hidden="true">*</span></label>
-              <input id="firstName" name="entry_prenom" type="text" autocomplete="given-name" required>
-            </div>
-
-            <div class="field">
-              <label for="lastName">Nom <span aria-hidden="true">*</span></label>
-              <input id="lastName" name="entry_nom" type="text" autocomplete="family-name" required>
-            </div>
-
-            <div class="field">
-              <label for="company">Établissement <span aria-hidden="true">*</span></label>
-              <input id="company" name="entry_etablissement" type="text" autocomplete="organization" required>
-            </div>
-
-            <div class="field">
-              <label for="role">Fonction <span aria-hidden="true">*</span></label>
-              <input id="role" name="entry_fonction" type="text" autocomplete="organization-title" required>
-            </div>
-
-            <div class="field">
-              <label for="phone">Téléphone <span class="optional">(facultatif)</span></label>
-              <input id="phone" name="entry_telephone" type="tel" autocomplete="tel">
-            </div>
-
-            <div class="field">
-              <label for="leadSector">Type d’établissement <span aria-hidden="true">*</span></label>
-              <select id="leadSector" name="entry_type_etablissement" required>
-                <option value="">Sélectionner</option>
-                <option value="Restaurant / brasserie">Restaurant / brasserie</option>
-                <option value="Hôtellerie">Hôtellerie</option>
-                <option value="Café / bar">Café / bar</option>
-                <option value="Restauration collective">Restauration collective</option>
-                <option value="Restauration rapide">Restauration rapide</option>
-                <option value="Autre établissement CHR">Autre établissement CHR</option>
-              </select>
-            </div>
-
-            <div class="field field-wide">
-              <label for="email">Email <span aria-hidden="true">*</span></label>
-              <input id="email" name="entry_email" type="email" autocomplete="email" required>
-            </div>
-          </div>
-
-          <div class="consent-field">
-            <input id="consent" name="entry_consentement" type="checkbox" value="Oui" required>
-            <label for="consent">
-              J’accepte de recevoir la checklist “Manager un service sous pression : 10 réflexes QVCT pour le CHR”
-              et d’être recontacté au sujet de la QVCT en CHR.
-            </label>
-          </div>
-
-          <button class="button button-primary button-full" type="submit">Recevoir ma checklist</button>
-        </form>
-      </div>
-    </section>
-
-    <noscript>
-      <section class="section">
-        <div class="container app-card">
-          <h2>Version sans JavaScript</h2>
-          <p>
-            La fresque interactive nécessite JavaScript pour calculer le score et afficher le diagnostic personnalisé.
-            Vous pouvez toutefois utiliser cette page comme support de sensibilisation QVCT et contacter After All
-            pour recevoir la checklist.
+          <p class="definition-box">
+            La QVCT, c’est la qualité de vie et des conditions de travail : elle
+            vise à améliorer à la fois le bien-être des équipes, l’organisation
+            du travail, la prévention des risques et la performance durable de
+            l’établissement.
           </p>
         </div>
       </section>
-    </noscript>
-  </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <p>© After All · Outil de sensibilisation QVCT pour les professionnels du CHR</p>
-      <a href="#accueil">Retour en haut</a>
-    </div>
-  </footer>
+      <section
+        id="jouer"
+        class="section game-shell"
+        aria-labelledby="game-title"
+      >
+        <div class="container">
+          <div class="section-heading">
+            <p class="eyebrow">Fresque interactive</p>
+            <h2 id="game-title">Choisissez votre terrain CHR</h2>
+            <p>
+              Les situations seront adaptées à votre type d’établissement. Si
+              vous hésitez, choisissez “autre établissement CHR”.
+            </p>
+          </div>
 
-  <script src="script.js" defer></script>
-</body>
+          <div id="app" class="app-card">
+            <section
+              id="sector-step"
+              class="step-panel"
+              aria-labelledby="sector-title"
+            >
+              <h3 id="sector-title">Votre secteur</h3>
+              <form id="sector-form" class="sector-form">
+                <fieldset>
+                  <legend class="sr-only">
+                    Sélectionnez un type d’établissement
+                  </legend>
+
+                  <div class="sector-grid" id="sector-options">
+                    <label class="sector-option">
+                      <input
+                        type="radio"
+                        name="sector"
+                        value="restaurant"
+                        required
+                      />
+                      <span>Restaurant / brasserie</span>
+                    </label>
+
+                    <label class="sector-option">
+                      <input type="radio" name="sector" value="hotel" />
+                      <span>Hôtellerie</span>
+                    </label>
+
+                    <label class="sector-option">
+                      <input type="radio" name="sector" value="bar" />
+                      <span>Café / bar</span>
+                    </label>
+
+                    <label class="sector-option">
+                      <input type="radio" name="sector" value="collective" />
+                      <span>Restauration collective</span>
+                    </label>
+
+                    <label class="sector-option">
+                      <input type="radio" name="sector" value="rapide" />
+                      <span>Restauration rapide</span>
+                    </label>
+
+                    <label class="sector-option">
+                      <input type="radio" name="sector" value="autre" />
+                      <span>Autre établissement CHR</span>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <p id="sector-error" class="form-error" role="alert" hidden>
+                  Veuillez choisir un secteur pour lancer la fresque.
+                </p>
+
+                <button class="button button-primary" type="submit">
+                  Lancer le parcours
+                </button>
+              </form>
+            </section>
+
+            <section
+              id="question-step"
+              class="step-panel"
+              aria-labelledby="question-title"
+              hidden
+            >
+              <div class="progress-block" aria-label="Progression">
+                <div class="progress-meta">
+                  <span id="progress-text">Question 1 sur 7</span>
+                  <span id="current-score">Score provisoire : 0</span>
+                </div>
+                <div class="progress-track" aria-hidden="true">
+                  <span id="progress-bar"></span>
+                </div>
+              </div>
+
+              <div class="question-card" aria-live="polite" aria-atomic="true">
+                <p class="scenario-label" id="scenario-tag">
+                  Situation terrain
+                </p>
+                <h3 id="question-title" tabindex="-1">Question</h3>
+                <p id="question-scene" class="question-scene"></p>
+                <p id="question-qvct" class="qvct-link"></p>
+
+                <div
+                  id="choices"
+                  class="choices"
+                  role="group"
+                  aria-labelledby="question-title"
+                ></div>
+
+                <div
+                  id="feedback"
+                  class="feedback"
+                  role="status"
+                  aria-live="polite"
+                  hidden
+                ></div>
+
+                <div class="question-actions">
+                  <button
+                    id="next-question"
+                    class="button button-primary"
+                    type="button"
+                    hidden
+                  >
+                    Continuer
+                  </button>
+                  <button
+                    id="restart-from-question"
+                    class="button button-ghost"
+                    type="button"
+                  >
+                    Recommencer
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            <section
+              id="result-step"
+              class="step-panel result-panel"
+              aria-labelledby="result-title"
+              hidden
+            >
+              <p class="eyebrow">Diagnostic final</p>
+              <h3 id="result-title" tabindex="-1">Votre score QVCT</h3>
+
+              <div class="score-card" aria-live="polite">
+                <div class="score-circle">
+                  <span id="final-score">0</span>
+                  <small>/100</small>
+                </div>
+                <div>
+                  <h4 id="score-level">Niveau</h4>
+                  <p id="score-message"></p>
+                </div>
+              </div>
+
+              <div id="summary-print-area" class="summary-grid">
+                <article class="summary-card">
+                  <h4>Forces repérées</h4>
+                  <ul id="strengths-list"></ul>
+                </article>
+
+                <article class="summary-card">
+                  <h4>Points de vigilance</h4>
+                  <ul id="watch-list"></ul>
+                </article>
+
+                <article class="summary-card summary-card-wide">
+                  <h4>3 actions prioritaires dès demain</h4>
+                  <ol id="actions-list"></ol>
+                </article>
+              </div>
+
+              <div class="result-actions">
+                <button
+                  id="print-summary"
+                  class="button button-secondary"
+                  type="button"
+                >
+                  Imprimer ma synthèse
+                </button>
+                <button
+                  id="restart-game"
+                  class="button button-ghost"
+                  type="button"
+                >
+                  Recommencer
+                </button>
+              </div>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="checklist"
+        class="section lead-section"
+        aria-labelledby="lead-title"
+      >
+        <div class="container lead-grid">
+          <div>
+            <p class="eyebrow">Ressource gratuite</p>
+            <h2 id="lead-title">
+              Recevoir la checklist : Manager un service sous pression — 10
+              réflexes QVCT pour le CHR
+            </h2>
+            <p>
+              Vous avez terminé la fresque. Pour garder une trace concrète de
+              vos résultats, vous pouvez recevoir gratuitement la checklist des
+              10 réflexes QVCT à appliquer en établissement CHR.
+            </p>
+            <p class="privacy-note">
+              Vos informations sont transmises à l’équipe administrative d’After
+              All afin de vous envoyer la ressource et, si vous l’avez accepté,
+              de vous recontacter au sujet de la QVCT. Vous pouvez demander
+              l’accès, la modification ou la suppression de vos données.
+              <a
+                href="#"
+                aria-label="Lire la politique de confidentialité, lien à remplacer"
+                >Politique de confidentialité</a
+              >
+            </p>
+          </div>
+
+          <form id="lead-form" class="lead-form" novalidate>
+            <!--
+    BRANCHEMENT GOOGLE FORMS
+    URL d’envoi à renseigner dans script.js :
+    https://docs.google.com/forms/d/e/1FAIpQLSczIo_lgErL3R8OX4swXLeV4swh2S6_Uh5GZThDWFydbWFuEw/formResponse
+  -->
+
+            <div
+              id="form-status"
+              class="form-status"
+              role="status"
+              aria-live="polite"
+            ></div>
+            <div
+              id="form-errors"
+              class="form-errors"
+              role="alert"
+              aria-live="assertive"
+              tabindex="-1"
+              hidden
+            ></div>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="firstName"
+                  >Prénom <span aria-hidden="true">*</span></label
+                >
+                <input
+                  id="firstName"
+                  name="entry.321557291"
+                  type="text"
+                  autocomplete="given-name"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="lastName"
+                  >Nom <span aria-hidden="true">*</span></label
+                >
+                <input
+                  id="lastName"
+                  name="entry.1673440183"
+                  type="text"
+                  autocomplete="family-name"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="company"
+                  >Établissement <span aria-hidden="true">*</span></label
+                >
+                <input
+                  id="company"
+                  name="entry.1304022445"
+                  type="text"
+                  autocomplete="organization"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="role"
+                  >Fonction <span aria-hidden="true">*</span></label
+                >
+                <input
+                  id="role"
+                  name="entry.2027403457"
+                  type="text"
+                  autocomplete="organization-title"
+                  required
+                />
+              </div>
+
+              <div class="field">
+                <label for="phone"
+                  >Téléphone <span class="optional">(facultatif)</span></label
+                >
+                <input
+                  id="phone"
+                  name="entry.112758438"
+                  type="tel"
+                  autocomplete="tel"
+                />
+              </div>
+
+              <div class="field">
+                <label for="leadSector"
+                  >Type d’établissement <span aria-hidden="true">*</span></label
+                >
+                <select id="leadSector" name="entry.1950839911" required>
+                  <option value="">Sélectionner</option>
+                  <option value="Restaurant / brasserie">
+                    Restaurant / brasserie
+                  </option>
+                  <option value="Hôtellerie">Hôtellerie</option>
+                  <option value="Café / bar">Café / bar</option>
+                  <option value="Restauration collective">
+                    Restauration collective
+                  </option>
+                  <option value="Restauration rapide">
+                    Restauration rapide
+                  </option>
+                  <option value="Autre établissement CHR">
+                    Autre établissement CHR
+                  </option>
+                </select>
+              </div>
+
+              <div class="field field-wide">
+                <label for="email"
+                  >Email <span aria-hidden="true">*</span></label
+                >
+                <input
+                  id="email"
+                  name="entry.1307729366"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="consent-field">
+              <input
+                id="consent"
+                name="entry.767331738"
+                type="checkbox"
+                value="J’accepte de recevoir la checklist “Manager un service sous pression : 10 réflexes QVCT pour le CHR” et d’être recontacté au sujet de la QVCT."
+                required
+              />
+              <label for="consent">
+                J’accepte de recevoir la checklist “Manager un service sous
+                pression : 10 réflexes QVCT pour le CHR” et d’être recontacté au
+                sujet de la QVCT.
+              </label>
+            </div>
+
+            <button class="button button-primary button-full" type="submit">
+              Recevoir ma checklist
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <noscript>
+        <section class="section">
+          <div class="container app-card">
+            <h2>Version sans JavaScript</h2>
+            <p>
+              La fresque interactive nécessite JavaScript pour calculer le score
+              et afficher le diagnostic personnalisé. Vous pouvez toutefois
+              utiliser cette page comme support de sensibilisation QVCT et
+              contacter After All pour recevoir la checklist.
+            </p>
+          </div>
+        </section>
+      </noscript>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>
+          © After All · Outil de sensibilisation QVCT pour les professionnels du
+          CHR
+        </p>
+        <a href="#accueil">Retour en haut</a>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
 </html>

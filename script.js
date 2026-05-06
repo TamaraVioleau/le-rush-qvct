@@ -3,8 +3,8 @@
   Compatible GitHub Pages · JavaScript vanilla · Sans cookie ni tracker
 */
 
-const GOOGLE_FORMS_ACTION_URL = ""; // À remplacer par l’URL Google Forms du type https://docs.google.com/forms/d/e/XXXX/formResponse
-
+const GOOGLE_FORMS_ACTION_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSczIo_lgErL3R8OX4swXLeV4swh2S6_Uh5GZThDWFydbWFuEw/formResponse";
 const STORAGE_KEY = "rush-qvct-sector";
 
 const sectors = {
@@ -13,43 +13,43 @@ const sectors = {
     place: "la cuisine et la salle",
     moment: "le coup de feu du midi",
     team: "la brigade et l’équipe de salle",
-    manager: "le responsable de service"
+    manager: "le responsable de service",
   },
   hotel: {
     label: "Hôtellerie",
     place: "la réception, les étages et le petit-déjeuner",
     moment: "l’arrivée simultanée de clients et les départs du matin",
     team: "la réception, les étages et l’équipe petit-déjeuner",
-    manager: "le responsable d’exploitation"
+    manager: "le responsable d’exploitation",
   },
   bar: {
     label: "Café / bar",
     place: "le comptoir et la terrasse",
     moment: "l’affluence de fin de journée",
     team: "l’équipe bar et terrasse",
-    manager: "le responsable du bar"
+    manager: "le responsable du bar",
   },
   collective: {
     label: "Restauration collective",
     place: "la production, le self et la plonge",
     moment: "la montée en charge du service",
     team: "l’équipe de production et de distribution",
-    manager: "le chef de production"
+    manager: "le chef de production",
   },
   rapide: {
     label: "Restauration rapide",
     place: "le comptoir, la cuisine et la zone de retrait",
     moment: "le pic de commandes sur place, livraison et drive",
     team: "l’équipe comptoir et production",
-    manager: "le manager de shift"
+    manager: "le manager de shift",
   },
   autre: {
     label: "Autre établissement CHR",
     place: "les zones de service",
     moment: "une période de forte activité",
     team: "l’équipe terrain",
-    manager: "le manager de proximité"
-  }
+    manager: "le manager de proximité",
+  },
 };
 
 const tagLabels = {
@@ -59,17 +59,24 @@ const tagLabels = {
   communication: "Communication et gestion des tensions",
   prevention: "Prévention des risques physiques",
   planning: "Charge de travail et planning",
-  duerp: "Remontée terrain, DUERP et amélioration continue"
+  duerp: "Remontée terrain, DUERP et amélioration continue",
 };
 
 const actionMap = {
-  organisation: "Formaliser un briefing de 5 minutes avant les pics d’activité : rôles, priorités, points sensibles et entraide possible.",
-  integration: "Prévoir un binôme identifié pour chaque nouveau ou saisonnier, avec une consigne simple : personne ne doit découvrir seul les règles critiques.",
-  pauses: "Rendre les pauses visibles dans l’organisation du service, même courtes, pour limiter l’usure et les erreurs liées à la fatigue.",
-  communication: "Installer un rituel de débrief court après les situations tendues : faits, impacts, décision utile pour le prochain service.",
-  prevention: "Traiter les presque-accidents comme des alertes utiles : sécuriser tout de suite, puis ajuster les consignes ou le matériel.",
-  planning: "Prévoir un plan B d’absence ou de surcharge avant le rush : priorités, renforts possibles, tâches reportables.",
-  duerp: "Mettre à jour le DUERP à partir du réel terrain : incidents, irritants fréquents, retours d’équipe et actions suivies."
+  organisation:
+    "Formaliser un briefing de 5 minutes avant les pics d’activité : rôles, priorités, points sensibles et entraide possible.",
+  integration:
+    "Prévoir un binôme identifié pour chaque nouveau ou saisonnier, avec une consigne simple : personne ne doit découvrir seul les règles critiques.",
+  pauses:
+    "Rendre les pauses visibles dans l’organisation du service, même courtes, pour limiter l’usure et les erreurs liées à la fatigue.",
+  communication:
+    "Installer un rituel de débrief court après les situations tendues : faits, impacts, décision utile pour le prochain service.",
+  prevention:
+    "Traiter les presque-accidents comme des alertes utiles : sécuriser tout de suite, puis ajuster les consignes ou le matériel.",
+  planning:
+    "Prévoir un plan B d’absence ou de surcharge avant le rush : priorités, renforts possibles, tâches reportables.",
+  duerp:
+    "Mettre à jour le DUERP à partir du réel terrain : incidents, irritants fréquents, retours d’équipe et actions suivies.",
 };
 
 const questions = [
@@ -79,31 +86,33 @@ const questions = [
     title: "Le service démarre déjà sous pression",
     scene:
       "Dans {place}, {team} sent que {moment} va être dense. Deux personnes demandent des consignes en même temps, les priorités ne sont pas claires et {manager} doit lancer le service.",
-    qvct:
-      "Enjeu QVCT : clarifier l’organisation avant le rush évite les tensions inutiles et soutient la performance du service.",
+    qvct: "Enjeu QVCT : clarifier l’organisation avant le rush évite les tensions inutiles et soutient la performance du service.",
     choices: [
       {
-        label: "Faire un briefing express : priorités, rôles, points de vigilance et entraide attendue.",
+        label:
+          "Faire un briefing express : priorités, rôles, points de vigilance et entraide attendue.",
         score: 100,
         level: "good",
         feedback:
-          "Bon réflexe. Un cadrage très court avant l’action réduit les malentendus et sécurise l’équipe sans ralentir le service."
+          "Bon réflexe. Un cadrage très court avant l’action réduit les malentendus et sécurise l’équipe sans ralentir le service.",
       },
       {
-        label: "Répondre aux questions au fil de l’eau, en fonction des urgences qui arrivent.",
+        label:
+          "Répondre aux questions au fil de l’eau, en fonction des urgences qui arrivent.",
         score: 60,
         level: "medium",
         feedback:
-          "Réflexe compréhensible, mais fragile. Cela peut fonctionner ponctuellement, mais l’équipe risque de courir après l’information."
+          "Réflexe compréhensible, mais fragile. Cela peut fonctionner ponctuellement, mais l’équipe risque de courir après l’information.",
       },
       {
-        label: "Accélérer tout de suite : chacun connaît son métier, il faut produire.",
+        label:
+          "Accélérer tout de suite : chacun connaît son métier, il faut produire.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. Sous pression, l’implicite crée des erreurs, des tensions et une charge mentale plus forte pour tout le monde."
-      }
-    ]
+          "Choix risqué. Sous pression, l’implicite crée des erreurs, des tensions et une charge mentale plus forte pour tout le monde.",
+      },
+    ],
   },
   {
     id: "nouveau-saisonnier",
@@ -111,31 +120,33 @@ const questions = [
     title: "Une nouvelle personne arrive dans le rythme du service",
     scene:
       "Une personne récemment arrivée rejoint {team}. Elle observe, hésite sur certaines consignes et n’ose pas interrompre {manager} pendant {moment}.",
-    qvct:
-      "Enjeu QVCT : une intégration structurée limite les erreurs, le stress et les risques, surtout en période de forte activité.",
+    qvct: "Enjeu QVCT : une intégration structurée limite les erreurs, le stress et les risques, surtout en période de forte activité.",
     choices: [
       {
-        label: "Désigner un binôme, rappeler les consignes critiques et prévoir un point rapide après le service.",
+        label:
+          "Désigner un binôme, rappeler les consignes critiques et prévoir un point rapide après le service.",
         score: 100,
         level: "good",
         feedback:
-          "Très bon choix. Le binôme sécurise l’apprentissage et évite de laisser la personne seule face aux risques du terrain."
+          "Très bon choix. Le binôme sécurise l’apprentissage et évite de laisser la personne seule face aux risques du terrain.",
       },
       {
-        label: "Lui confier uniquement des tâches simples jusqu’à ce qu’elle prenne le rythme.",
+        label:
+          "Lui confier uniquement des tâches simples jusqu’à ce qu’elle prenne le rythme.",
         score: 60,
         level: "medium",
         feedback:
-          "C’est protecteur, mais incomplet. Les tâches simples ne remplacent pas l’explication des règles, des priorités et des points de vigilance."
+          "C’est protecteur, mais incomplet. Les tâches simples ne remplacent pas l’explication des règles, des priorités et des points de vigilance.",
       },
       {
-        label: "La laisser apprendre en observant : dans le CHR, on comprend vite en faisant.",
+        label:
+          "La laisser apprendre en observant : dans le CHR, on comprend vite en faisant.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. L’apprentissage par immersion seule augmente les erreurs, l’isolement et l’exposition aux situations dangereuses."
-      }
-    ]
+          "Choix risqué. L’apprentissage par immersion seule augmente les erreurs, l’isolement et l’exposition aux situations dangereuses.",
+      },
+    ],
   },
   {
     id: "pauses-fatigue",
@@ -143,31 +154,33 @@ const questions = [
     title: "La fatigue commence à se voir",
     scene:
       "Après plusieurs heures dans {place}, les gestes deviennent moins précis. Une personne souffle qu’elle n’a pas pris de pause, mais {moment} n’est pas terminé.",
-    qvct:
-      "Enjeu QVCT : organiser la récupération est un levier de sécurité, de qualité de service et de prévention de l’usure.",
+    qvct: "Enjeu QVCT : organiser la récupération est un levier de sécurité, de qualité de service et de prévention de l’usure.",
     choices: [
       {
-        label: "Réorganiser temporairement les postes pour permettre une pause courte et réelle.",
+        label:
+          "Réorganiser temporairement les postes pour permettre une pause courte et réelle.",
         score: 100,
         level: "good",
         feedback:
-          "Bon réflexe terrain. Une pause courte mais effective peut éviter une erreur, une blessure ou une tension qui coûtera plus cher au collectif."
+          "Bon réflexe terrain. Une pause courte mais effective peut éviter une erreur, une blessure ou une tension qui coûtera plus cher au collectif.",
       },
       {
-        label: "Proposer de tenir encore un peu, puis de faire une pause dès que le flux baisse.",
+        label:
+          "Proposer de tenir encore un peu, puis de faire une pause dès que le flux baisse.",
         score: 60,
         level: "medium",
         feedback:
-          "Cela peut dépanner, mais attention à la pause qui disparaît. Sans décision claire, la récupération passe souvent après tout le reste."
+          "Cela peut dépanner, mais attention à la pause qui disparaît. Sans décision claire, la récupération passe souvent après tout le reste.",
       },
       {
-        label: "Reporter la pause : le service client passe avant, l’équipe récupérera ensuite.",
+        label:
+          "Reporter la pause : le service client passe avant, l’équipe récupérera ensuite.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. La fatigue accumulée augmente les erreurs, les accidents et l’irritabilité, y compris face aux clients."
-      }
-    ]
+          "Choix risqué. La fatigue accumulée augmente les erreurs, les accidents et l’irritabilité, y compris face aux clients.",
+      },
+    ],
   },
   {
     id: "incivilite-client",
@@ -175,31 +188,33 @@ const questions = [
     title: "Une tension client déborde sur l’équipe",
     scene:
       "Un client s’emporte. Le ton monte près de {place}. Une personne de {team} encaisse la remarque, continue à travailler, mais le climat se tend.",
-    qvct:
-      "Enjeu QVCT : soutenir l’équipe face aux incivilités protège la santé mentale, la cohésion et la qualité de la relation client.",
+    qvct: "Enjeu QVCT : soutenir l’équipe face aux incivilités protège la santé mentale, la cohésion et la qualité de la relation client.",
     choices: [
       {
-        label: "Intervenir calmement, poser un cadre au client, puis faire un court débrief avec la personne concernée.",
+        label:
+          "Intervenir calmement, poser un cadre au client, puis faire un court débrief avec la personne concernée.",
         score: 100,
         level: "good",
         feedback:
-          "Très bon réflexe. Le manager protège le cadre de travail sans dramatiser, puis transforme l’incident en apprentissage collectif."
+          "Très bon réflexe. Le manager protège le cadre de travail sans dramatiser, puis transforme l’incident en apprentissage collectif.",
       },
       {
-        label: "Laisser passer l’épisode, puis demander plus tard si tout va bien.",
+        label:
+          "Laisser passer l’épisode, puis demander plus tard si tout va bien.",
         score: 60,
         level: "medium",
         feedback:
-          "L’intention est bonne, mais tardive. Sans cadre visible, l’équipe peut avoir l’impression que subir fait partie du métier."
+          "L’intention est bonne, mais tardive. Sans cadre visible, l’équipe peut avoir l’impression que subir fait partie du métier.",
       },
       {
-        label: "Demander à l’équipe de rester professionnelle quoi qu’il arrive.",
+        label:
+          "Demander à l’équipe de rester professionnelle quoi qu’il arrive.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix fragile. Le professionnalisme ne doit pas signifier accepter l’incivilité sans soutien ni règle claire."
-      }
-    ]
+          "Choix fragile. Le professionnalisme ne doit pas signifier accepter l’incivilité sans soutien ni règle claire.",
+      },
+    ],
   },
   {
     id: "presque-accident",
@@ -207,31 +222,32 @@ const questions = [
     title: "Un presque-accident est signalé",
     scene:
       "Dans {place}, quelqu’un manque de glisser ou de se blesser. Il n’y a pas d’arrêt, le service continue, mais plusieurs personnes ont vu la scène.",
-    qvct:
-      "Enjeu QVCT : traiter les signaux faibles évite d’attendre l’accident pour agir.",
+    qvct: "Enjeu QVCT : traiter les signaux faibles évite d’attendre l’accident pour agir.",
     choices: [
       {
-        label: "Sécuriser immédiatement la zone, identifier la cause et noter l’action à suivre.",
+        label:
+          "Sécuriser immédiatement la zone, identifier la cause et noter l’action à suivre.",
         score: 100,
         level: "good",
         feedback:
-          "Excellent réflexe. Un presque-accident est une information précieuse : il permet d’agir avant qu’un dommage réel ne survienne."
+          "Excellent réflexe. Un presque-accident est une information précieuse : il permet d’agir avant qu’un dommage réel ne survienne.",
       },
       {
         label: "Rappeler rapidement à tout le monde de faire attention.",
         score: 60,
         level: "medium",
         feedback:
-          "Utile, mais insuffisant. La vigilance individuelle ne remplace pas une action sur la cause : sol, matériel, flux, rangement ou consigne."
+          "Utile, mais insuffisant. La vigilance individuelle ne remplace pas une action sur la cause : sol, matériel, flux, rangement ou consigne.",
       },
       {
-        label: "Ne pas interrompre le service puisqu’il n’y a pas eu de blessure.",
+        label:
+          "Ne pas interrompre le service puisqu’il n’y a pas eu de blessure.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. Ignorer un signal faible laisse le danger en place et banalise les alertes terrain."
-      }
-    ]
+          "Choix risqué. Ignorer un signal faible laisse le danger en place et banalise les alertes terrain.",
+      },
+    ],
   },
   {
     id: "absence-planning",
@@ -239,31 +255,32 @@ const questions = [
     title: "Une absence déséquilibre l’organisation",
     scene:
       "Une absence tombe au mauvais moment. {team} sait que {moment} sera plus tendu que prévu, et chacun commence à compenser à sa manière.",
-    qvct:
-      "Enjeu QVCT : anticiper la surcharge limite l’épuisement et évite que la performance repose seulement sur l’effort individuel.",
+    qvct: "Enjeu QVCT : anticiper la surcharge limite l’épuisement et évite que la performance repose seulement sur l’effort individuel.",
     choices: [
       {
-        label: "Prioriser les tâches, répartir la charge, identifier ce qui peut être reporté et prévenir l’équipe du plan.",
+        label:
+          "Prioriser les tâches, répartir la charge, identifier ce qui peut être reporté et prévenir l’équipe du plan.",
         score: 100,
         level: "good",
         feedback:
-          "Très bon choix. La surcharge se pilote mieux quand les arbitrages sont explicites et partagés."
+          "Très bon choix. La surcharge se pilote mieux quand les arbitrages sont explicites et partagés.",
       },
       {
-        label: "Demander à l’équipe de s’entraider davantage jusqu’à la fin du service.",
+        label:
+          "Demander à l’équipe de s’entraider davantage jusqu’à la fin du service.",
         score: 60,
         level: "medium",
         feedback:
-          "L’entraide est précieuse, mais elle doit être organisée. Sinon, elle repose souvent sur les mêmes personnes."
+          "L’entraide est précieuse, mais elle doit être organisée. Sinon, elle repose souvent sur les mêmes personnes.",
       },
       {
         label: "Compenser en accélérant et en réduisant les temps de pause.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. Réduire la récupération pour absorber la charge peut créer de l’usure, des erreurs et des tensions."
-      }
-    ]
+          "Choix risqué. Réduire la récupération pour absorber la charge peut créer de l’usure, des erreurs et des tensions.",
+      },
+    ],
   },
   {
     id: "duerp-retour",
@@ -271,39 +288,41 @@ const questions = [
     title: "Le même problème revient régulièrement",
     scene:
       "Après plusieurs services dans {place}, le même irritant revient : circulation difficile, matériel mal placé, consigne floue ou tension répétée. Tout le monde le connaît, mais rien ne change vraiment.",
-    qvct:
-      "Enjeu QVCT : relier les retours terrain au plan d’action et au DUERP permet de passer du constat à la prévention durable.",
+    qvct: "Enjeu QVCT : relier les retours terrain au plan d’action et au DUERP permet de passer du constat à la prévention durable.",
     choices: [
       {
-        label: "Organiser un court retour terrain, choisir une action concrète, la suivre et l’intégrer au plan de prévention.",
+        label:
+          "Organiser un court retour terrain, choisir une action concrète, la suivre et l’intégrer au plan de prévention.",
         score: 100,
         level: "good",
         feedback:
-          "Très bon réflexe. La QVCT devient concrète quand les irritants fréquents produisent des décisions visibles et suivies."
+          "Très bon réflexe. La QVCT devient concrète quand les irritants fréquents produisent des décisions visibles et suivies.",
       },
       {
-        label: "Noter le sujet pour une réunion ultérieure quand la période sera plus calme.",
+        label:
+          "Noter le sujet pour une réunion ultérieure quand la période sera plus calme.",
         score: 60,
         level: "medium",
         feedback:
-          "C’est mieux que rien, mais le risque est d’enterrer le sujet. Il faut au moins une première action simple ou une date de suivi."
+          "C’est mieux que rien, mais le risque est d’enterrer le sujet. Il faut au moins une première action simple ou une date de suivi.",
       },
       {
-        label: "Considérer que ces contraintes font partie du métier en période de rush.",
+        label:
+          "Considérer que ces contraintes font partie du métier en période de rush.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. Banaliser les irritants installe l’usure et empêche l’amélioration réelle des conditions de travail."
-      }
-    ]
-  }
+          "Choix risqué. Banaliser les irritants installe l’usure et empêche l’amélioration réelle des conditions de travail.",
+      },
+    ],
+  },
 ];
 
 let state = {
   sectorKey: "",
   currentQuestionIndex: 0,
   answers: [],
-  selectedChoice: null
+  selectedChoice: null,
 };
 
 const dom = {
@@ -335,7 +354,7 @@ const dom = {
   leadForm: document.querySelector("#lead-form"),
   leadSector: document.querySelector("#leadSector"),
   formErrors: document.querySelector("#form-errors"),
-  formStatus: document.querySelector("#form-status")
+  formStatus: document.querySelector("#form-status"),
 };
 
 function init() {
@@ -354,7 +373,9 @@ function bindEvents() {
   document.querySelectorAll("[data-start-link]").forEach((link) => {
     link.addEventListener("click", () => {
       setTimeout(() => {
-        const checked = dom.sectorForm.querySelector("input[name='sector']:checked");
+        const checked = dom.sectorForm.querySelector(
+          "input[name='sector']:checked",
+        );
         if (!checked) {
           dom.sectorForm.querySelector("input[name='sector']").focus();
         }
@@ -367,7 +388,9 @@ function restoreSector() {
   try {
     const savedSector = localStorage.getItem(STORAGE_KEY);
     if (savedSector && sectors[savedSector]) {
-      const input = dom.sectorForm.querySelector(`input[value="${savedSector}"]`);
+      const input = dom.sectorForm.querySelector(
+        `input[value="${savedSector}"]`,
+      );
       if (input) {
         input.checked = true;
         syncLeadSector(savedSector);
@@ -418,7 +441,7 @@ function showQuestionStep() {
 function renderQuestion() {
   const question = questions[state.currentQuestionIndex];
   const sector = sectors[state.sectorKey] || sectors.autre;
-  const progressValue = ((state.currentQuestionIndex) / questions.length) * 100;
+  const progressValue = (state.currentQuestionIndex / questions.length) * 100;
   const provisionalScore = calculateScore(state.answers);
 
   state.selectedChoice = null;
@@ -436,7 +459,9 @@ function renderQuestion() {
   dom.feedback.innerHTML = "";
   dom.nextQuestion.hidden = true;
   dom.nextQuestion.textContent =
-    state.currentQuestionIndex === questions.length - 1 ? "Voir mon diagnostic" : "Continuer";
+    state.currentQuestionIndex === questions.length - 1
+      ? "Voir mon diagnostic"
+      : "Continuer";
 
   dom.choices.innerHTML = "";
   shuffleArray(question.choices).forEach((choice) => {
@@ -485,7 +510,7 @@ function goToNextQuestion() {
     score: state.selectedChoice.score,
     level: state.selectedChoice.level,
     label: state.selectedChoice.label,
-    feedback: state.selectedChoice.feedback
+    feedback: state.selectedChoice.feedback,
   });
 
   state.currentQuestionIndex += 1;
@@ -544,7 +569,7 @@ function buildSynthesis() {
   const sortedTags = Object.entries(scoresByTag)
     .map(([tag, scores]) => ({
       tag,
-      average: scores.reduce((sum, score) => sum + score, 0) / scores.length
+      average: scores.reduce((sum, score) => sum + score, 0) / scores.length,
     }))
     .sort((a, b) => a.average - b.average)
     .map((item) => item.tag);
@@ -555,19 +580,19 @@ function buildSynthesis() {
     strengths:
       strengths.length > 0
         ? strengths.slice(0, 4)
-        : ["Votre diagnostic met surtout en avant des marges de progression : c’est une base utile pour prioriser."],
+        : [
+            "Votre diagnostic met surtout en avant des marges de progression : c’est une base utile pour prioriser.",
+          ],
     watchPoints:
       watchPoints.length > 0
         ? watchPoints.slice(0, 4)
-        : ["Aucun point critique majeur dans vos choix : l’enjeu principal est maintenant de pérenniser les pratiques."],
+        : [
+            "Aucun point critique majeur dans vos choix : l’enjeu principal est maintenant de pérenniser les pratiques.",
+          ],
     actions:
       actions.length > 0
         ? actions
-        : [
-            actionMap.organisation,
-            actionMap.communication,
-            actionMap.duerp
-          ]
+        : [actionMap.organisation, actionMap.communication, actionMap.duerp],
   };
 }
 
@@ -591,24 +616,27 @@ function calculateScore(answers) {
 function getScoreLevel(score) {
   if (score <= 45) {
     return {
-      title: "Zone de vigilance : vos équipes tiennent, mais le système fatigue.",
+      title:
+        "Zone de vigilance : vos équipes tiennent, mais le système fatigue.",
       message:
-        "Votre diagnostic indique que plusieurs décisions reposent encore sur l’urgence, l’effort individuel ou l’implicite. La priorité est de structurer quelques règles simples pour protéger l’équipe et stabiliser l’activité."
+        "Votre diagnostic indique que plusieurs décisions reposent encore sur l’urgence, l’effort individuel ou l’implicite. La priorité est de structurer quelques règles simples pour protéger l’équipe et stabiliser l’activité.",
     };
   }
 
   if (score <= 75) {
     return {
-      title: "Bases solides : vous avez de bons réflexes, mais certains points doivent être structurés.",
+      title:
+        "Bases solides : vous avez de bons réflexes, mais certains points doivent être structurés.",
       message:
-        "Vos choix montrent une culture terrain déjà présente. Pour progresser, l’enjeu est de transformer les bons réflexes en pratiques régulières, partagées et suivies."
+        "Vos choix montrent une culture terrain déjà présente. Pour progresser, l’enjeu est de transformer les bons réflexes en pratiques régulières, partagées et suivies.",
     };
   }
 
   return {
-    title: "Dynamique maîtrisée : vos pratiques soutiennent déjà la QVCT, pensez à les pérenniser.",
+    title:
+      "Dynamique maîtrisée : vos pratiques soutiennent déjà la QVCT, pensez à les pérenniser.",
     message:
-      "Votre diagnostic montre des décisions favorables à la prévention, à l’organisation et au soutien des équipes. La prochaine étape consiste à documenter ces pratiques et à les faire vivre dans la durée."
+      "Votre diagnostic montre des décisions favorables à la prévention, à l’organisation et au soutien des équipes. La prochaine étape consiste à documenter ces pratiques et à les faire vivre dans la durée.",
   };
 }
 
@@ -616,7 +644,7 @@ function getFeedbackTitle(level) {
   const titles = {
     good: "Réflexe QVCT solide",
     medium: "Réflexe utile, à structurer",
-    risky: "Point de vigilance"
+    risky: "Point de vigilance",
   };
 
   return titles[level] || "Feedback";
@@ -640,7 +668,7 @@ function resetGame() {
     sectorKey: "",
     currentQuestionIndex: 0,
     answers: [],
-    selectedChoice: null
+    selectedChoice: null,
   };
 
   dom.questionStep.hidden = true;
@@ -682,7 +710,7 @@ function handleLeadSubmit(event) {
   fetch(GOOGLE_FORMS_ACTION_URL, {
     method: "POST",
     mode: "no-cors",
-    body: formData
+    body: formData,
   })
     .then(() => {
       dom.leadForm.reset();
@@ -704,7 +732,7 @@ function validateLeadForm() {
     ["company", "L’établissement est obligatoire."],
     ["role", "La fonction est obligatoire."],
     ["leadSector", "Le type d’établissement est obligatoire."],
-    ["email", "L’email est obligatoire."]
+    ["email", "L’email est obligatoire."],
   ];
 
   requiredFields.forEach(([id, message]) => {
@@ -730,7 +758,9 @@ function validateLeadForm() {
   setInvalidState(consent, !consent.checked);
 
   if (!consent.checked) {
-    errors.push("Le consentement est obligatoire pour recevoir la checklist et être recontacté.");
+    errors.push(
+      "Le consentement est obligatoire pour recevoir la checklist et être recontacté.",
+    );
   }
 
   return errors;
