@@ -232,19 +232,17 @@ h4 {
 }
 
 h1 {
-  max-width: 12ch;
-  font-size: clamp(2.6rem, 9vw, 5.5rem);
-  letter-spacing: -0.06em;
+  max-width: 14ch;
+  font-size: clamp(2.6rem, 7vw, 5.5rem);
+  letter-spacing: -0.03em;
 }
 
 h2 {
   font-size: clamp(2rem, 5vw, 3.1rem);
-  letter-spacing: -0.04em;
 }
 
 h3 {
   font-size: clamp(1.45rem, 4vw, 2.15rem);
-  letter-spacing: -0.03em;
 }
 
 h4 {
