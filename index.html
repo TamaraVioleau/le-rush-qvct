@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>
-      Le Rush QVCT — Fresque interactive du management sous pression
+      Le Rush QVCT : la fresque interactive des conditions de travail dans le
+      foodbusiness
     </title>
     <meta
       name="description"
@@ -315,12 +316,121 @@
               actualités, ressources et actions de formation. Vous pouvez
               demander l’accès, la modification ou la suppression de vos
               données.
-              <a
-                href="#"
-                aria-label="Lire la politique de confidentialité, lien à remplacer"
-                >Politique de confidentialité</a
+              <button
+                type="button"
+                class="privacy-link"
+                data-open-privacy
+                aria-haspopup="dialog"
+                aria-controls="privacy-dialog"
               >
+                Politique de confidentialité
+              </button>
             </p>
+
+            <dialog
+              id="privacy-dialog"
+              class="privacy-dialog"
+              aria-labelledby="privacy-dialog-title"
+            >
+              <div class="privacy-dialog-content">
+                <button
+                  type="button"
+                  class="privacy-close"
+                  data-close-privacy
+                  aria-label="Fermer la politique de confidentialité"
+                >
+                  ×
+                </button>
+
+                <h3 id="privacy-dialog-title">Politique de confidentialité</h3>
+
+                <p>
+                  Les informations personnelles collectées via ce formulaire
+                  sont utilisées par AFTER ALL afin de gérer votre inscription à
+                  la newsletter Zest’us, de répondre à vos demandes
+                  d’information et, lorsque cela est nécessaire, d’assurer la
+                  bonne exécution des prestations demandées.
+                </p>
+
+                <p>
+                  Vos données personnelles sont confidentielles. Elles ne sont
+                  pas confiées à des tiers, sauf aux prestataires intervenant
+                  pour le compte d’AFTER ALL dans le cadre de la gestion du
+                  site, de ses services ou de ses outils, et uniquement
+                  lorsqu’ils sont liés par des engagements de confidentialité et
+                  de sécurité.
+                </p>
+
+                <p>
+                  AFTER ALL s’engage à assurer la sécurité des données
+                  collectées afin d’éviter qu’elles ne soient déformées,
+                  endommagées ou communiquées à des tiers non autorisés. Ces
+                  données sont utilisées exclusivement pour gérer les
+                  inscriptions, les demandes d’information, les commandes et les
+                  échanges liés au site after-all.fr.
+                </p>
+
+                <p>
+                  On entend par données à caractère personnel toute information
+                  permettant d’identifier directement ou indirectement une
+                  personne, notamment le nom, le prénom, l’adresse email, le
+                  numéro de téléphone, la fonction ou le nom de l’établissement
+                  renseigné.
+                </p>
+
+                <p>
+                  Lorsque vous fournissez des données personnelles, vous vous
+                  engagez à transmettre des informations exactes, à jour et ne
+                  portant pas préjudice aux droits de tiers. Aucune donnée
+                  personnelle n’est collectée sans votre consentement. Les
+                  informations obligatoires sont signalées dans le formulaire.
+                </p>
+
+                <p>
+                  Vous pouvez demander l’accès, la modification ou la
+                  suppression de vos données personnelles. Vous pouvez également
+                  retirer votre consentement à tout moment concernant la
+                  réception de la newsletter ou d’informations envoyées par
+                  AFTER ALL.
+                </p>
+
+                <p>
+                  AFTER ALL est responsable de la collecte et du traitement des
+                  données à caractère personnel effectués sur ce site. AFTER ALL
+                  ne pourra être tenue responsable de la perte ou de la
+                  disparition de données liée à un cas de force majeure ou au
+                  fait d’un tiers.
+                </p>
+
+                <section
+                  class="privacy-rights"
+                  aria-labelledby="privacy-rights-title"
+                >
+                  <h4 id="privacy-rights-title">Droit d’accès</h4>
+
+                  <p>
+                    Conformément à la réglementation applicable, vous disposez
+                    d’un droit d’accès, de rectification, de modification et de
+                    suppression concernant les données personnelles qui vous
+                    concernent.
+                  </p>
+
+                  <p>Ce droit peut être exercé :</p>
+
+                  <address>
+                    <strong>Par voie postale :</strong><br />
+                    AFTER ALL<br />
+                    12 Boulevard de Vincennes<br />
+                    94120 Fontenay-sous-Bois
+                  </address>
+
+                  <p>
+                    <strong>Par voie électronique :</strong><br />
+                    <a href="mailto:info@after-all.fr">info@after-all.fr</a>
+                  </p>
+                </section>
+              </div>
+            </dialog>
           </div>
 
           <form id="lead-form" class="lead-form" novalidate>

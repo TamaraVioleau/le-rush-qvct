@@ -9,310 +9,315 @@ const STORAGE_KEY = "rush-qvct-sector";
 
 const sectors = {
   restaurant: {
-    label: "Restaurant / brasserie",
-    place: "la cuisine et la salle",
-    moment: "le coup de feu du midi",
-    team: "la brigade et l’équipe de salle",
-    manager: "le responsable de service",
+    label: "Restaurant / brasserie / concept food",
+    place: "les espaces de production, de vente et d’accueil",
+    moment: "une journée d’activité classique",
+    team: "les équipes cuisine, salle, accueil et support",
+    manager: "la personne référente",
   },
   hotel: {
-    label: "Hôtellerie",
-    place: "la réception, les étages et le petit-déjeuner",
-    moment: "l’arrivée simultanée de clients et les départs du matin",
-    team: "la réception, les étages et l’équipe petit-déjeuner",
-    manager: "le responsable d’exploitation",
+    label: "Hôtellerie-restauration",
+    place:
+      "la réception, les étages, le petit-déjeuner et les espaces de restauration",
+    moment: "une journée rythmée entre accueil, production et coordination",
+    team: "les équipes réception, étages, restauration et support",
+    manager: "la personne responsable de l’organisation",
   },
   bar: {
-    label: "Café / bar",
-    place: "le comptoir et la terrasse",
-    moment: "l’affluence de fin de journée",
-    team: "l’équipe bar et terrasse",
-    manager: "le responsable du bar",
+    label: "Café / bar / coffee shop",
+    place: "le comptoir, la terrasse, la réserve et les espaces clients",
+    moment: "une journée alternant préparation, accueil et vente",
+    team: "l’équipe bar, accueil, vente et préparation",
+    manager: "la personne référente sur place",
   },
   collective: {
-    label: "Restauration collective",
-    place: "la production, le self et la plonge",
-    moment: "la montée en charge du service",
-    team: "l’équipe de production et de distribution",
-    manager: "le chef de production",
+    label: "Restauration collective / cuisine centrale",
+    place: "les zones de production, de distribution, de stockage et de plonge",
+    moment:
+      "une journée organisée autour de la production et de la distribution",
+    team: "les équipes de production, distribution, logistique et plonge",
+    manager: "la personne responsable de l’activité",
   },
   rapide: {
-    label: "Restauration rapide",
-    place: "le comptoir, la cuisine et la zone de retrait",
-    moment: "le pic de commandes sur place, livraison et drive",
-    team: "l’équipe comptoir et production",
-    manager: "le manager de shift",
+    label: "Restauration rapide / vente à emporter / livraison",
+    place: "la zone de préparation, le comptoir, le retrait et les commandes",
+    moment:
+      "une journée avec des flux variables entre préparation, vente et livraison",
+    team: "les équipes production, vente, livraison et coordination",
+    manager: "la personne référente de l’équipe",
   },
   autre: {
-    label: "Autre établissement CHR",
-    place: "les zones de service",
-    moment: "une période de forte activité",
+    label: "Foodbusiness / métiers de bouche",
+    place: "les espaces de travail, de préparation, de vente ou de production",
+    moment: "une journée d’activité ordinaire",
     team: "l’équipe terrain",
-    manager: "le manager de proximité",
+    manager: "la personne référente",
   },
 };
 
 const tagLabels = {
-  organisation: "Organisation du travail",
-  integration: "Intégration des nouveaux et saisonniers",
-  pauses: "Pauses, récupération et fatigue",
-  communication: "Communication et gestion des tensions",
-  prevention: "Prévention des risques physiques",
-  planning: "Charge de travail et planning",
-  duerp: "Remontée terrain, DUERP et amélioration continue",
+  organisation: "Organisation réelle du travail",
+  integration: "Accueil, transmission et intégration",
+  pauses: "Récupération, rythme et fatigue",
+  communication: "Communication, coopération et climat d’équipe",
+  prevention: "Prévention des risques professionnels",
+  planning: "Planning, charge et équilibre de l’activité",
+  duerp: "Remontées terrain, DUERP et amélioration continue",
 };
 
 const actionMap = {
   organisation:
-    "Formaliser un briefing de 5 minutes avant les pics d’activité : rôles, priorités, points sensibles et entraide possible.",
+    "Clarifier le fonctionnement quotidien : rôles, priorités, relais possibles, points de vigilance et règles communes.",
   integration:
-    "Prévoir un binôme identifié pour chaque nouveau ou saisonnier, avec une consigne simple : personne ne doit découvrir seul les règles critiques.",
+    "Prévoir un parcours d’accueil simple : binôme, consignes essentielles, points de repère et temps de questions identifié.",
   pauses:
-    "Rendre les pauses visibles dans l’organisation du service, même courtes, pour limiter l’usure et les erreurs liées à la fatigue.",
+    "Rendre les temps de récupération visibles dans l’organisation, même courts, pour prévenir la fatigue et les erreurs.",
   communication:
-    "Installer un rituel de débrief court après les situations tendues : faits, impacts, décision utile pour le prochain service.",
+    "Installer un rituel d’échange court et régulier pour traiter les irritants avant qu’ils ne deviennent des tensions.",
   prevention:
-    "Traiter les presque-accidents comme des alertes utiles : sécuriser tout de suite, puis ajuster les consignes ou le matériel.",
+    "Transformer les risques du quotidien en actions concrètes : rangement, matériel, gestes, circulation, consignes et suivi.",
   planning:
-    "Prévoir un plan B d’absence ou de surcharge avant le rush : priorités, renforts possibles, tâches reportables.",
+    "Comparer régulièrement le planning prévu avec la charge réelle pour ajuster les effectifs, les priorités et les temps de récupération.",
   duerp:
-    "Mettre à jour le DUERP à partir du réel terrain : incidents, irritants fréquents, retours d’équipe et actions suivies.",
+    "Faire remonter les situations récurrentes dans le plan d’action et le DUERP afin de passer du constat à l’amélioration durable.",
 };
 
 const questions = [
   {
-    id: "briefing-rush",
+    id: "organisation-quotidienne",
     tag: "organisation",
-    title: "Le service démarre déjà sous pression",
+    title: "L’organisation du travail au quotidien",
     scene:
-      "Dans {place}, {team} sent que {moment} va être dense. Deux personnes demandent des consignes en même temps, les priorités ne sont pas claires et {manager} doit lancer le service.",
-    qvct: "Enjeu QVCT : clarifier l’organisation avant le rush évite les tensions inutiles et soutient la performance du service.",
+      "Dans {place}, {team} commence {moment}. Les tâches sont connues, mais la répartition dépend beaucoup des habitudes. Certaines consignes restent implicites et tout le monde ne sait pas toujours à qui s’adresser.",
+    qvct: "Enjeu QVCT : une organisation claire réduit la charge mentale, limite les malentendus et aide chacun à travailler dans de meilleures conditions.",
     choices: [
       {
         label:
-          "Faire un briefing express : priorités, rôles, points de vigilance et entraide attendue.",
+          "Clarifier les rôles, les priorités, les points de vigilance et les relais possibles dès le début de la journée.",
         score: 100,
         level: "good",
         feedback:
-          "Bon réflexe. Un cadrage très court avant l’action réduit les malentendus et sécurise l’équipe sans ralentir le service.",
+          "Bon réflexe. La QVCT commence par une organisation lisible : chacun sait ce qu’il doit faire, avec qui coopérer et quand demander de l’aide.",
       },
       {
         label:
-          "Répondre aux questions au fil de l’eau, en fonction des urgences qui arrivent.",
+          "Laisser l’équipe s’organiser naturellement, puis intervenir seulement si un problème apparaît.",
         score: 60,
         level: "medium",
         feedback:
-          "Réflexe compréhensible, mais fragile. Cela peut fonctionner ponctuellement, mais l’équipe risque de courir après l’information.",
+          "Cela peut fonctionner avec une équipe expérimentée, mais cela reste fragile. Quand tout repose sur l’habitude, les nouveaux, les renforts ou les personnes fatiguées peuvent vite être perdues.",
       },
       {
         label:
-          "Accélérer tout de suite : chacun connaît son métier, il faut produire.",
+          "Considérer que chacun connaît son poste et que l’organisation se réglera au fil de la journée.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. Sous pression, l’implicite crée des erreurs, des tensions et une charge mentale plus forte pour tout le monde.",
+          "Choix risqué. L’implicite crée de la charge mentale, des erreurs, des tensions et une dépendance aux personnes les plus expérimentées.",
       },
     ],
   },
   {
-    id: "nouveau-saisonnier",
+    id: "integration-reperes",
     tag: "integration",
-    title: "Une nouvelle personne arrive dans le rythme du service",
+    title: "Une nouvelle personne prend ses repères",
     scene:
-      "Une personne récemment arrivée rejoint {team}. Elle observe, hésite sur certaines consignes et n’ose pas interrompre {manager} pendant {moment}.",
-    qvct: "Enjeu QVCT : une intégration structurée limite les erreurs, le stress et les risques, surtout en période de forte activité.",
+      "Une personne récemment arrivée rejoint {team}. Elle observe, hésite sur certaines pratiques, ne connaît pas encore les règles importantes et n’ose pas toujours solliciter {manager}.",
+    qvct: "Enjeu QVCT : une intégration structurée protège la personne, sécurise l’activité et évite que l’apprentissage repose uniquement sur l’observation.",
     choices: [
       {
         label:
-          "Désigner un binôme, rappeler les consignes critiques et prévoir un point rapide après le service.",
+          "Prévoir un binôme, transmettre les consignes essentielles et organiser un court point de suivi en fin de journée.",
         score: 100,
         level: "good",
         feedback:
-          "Très bon choix. Le binôme sécurise l’apprentissage et évite de laisser la personne seule face aux risques du terrain.",
+          "Très bon choix. Un accueil clair limite le stress, les erreurs et le sentiment d’isolement. C’est un levier QVCT très concret.",
       },
       {
         label:
-          "Lui confier uniquement des tâches simples jusqu’à ce qu’elle prenne le rythme.",
+          "Lui confier d’abord des tâches simples, puis compléter les explications quand l’activité sera plus calme.",
         score: 60,
         level: "medium",
         feedback:
-          "C’est protecteur, mais incomplet. Les tâches simples ne remplacent pas l’explication des règles, des priorités et des points de vigilance.",
+          "C’est protecteur, mais incomplet. Les tâches simples ne remplacent pas les repères essentiels : sécurité, priorités, personnes ressources et règles de fonctionnement.",
       },
       {
         label:
-          "La laisser apprendre en observant : dans le CHR, on comprend vite en faisant.",
+          "La laisser apprendre en observant les autres, comme cela se fait souvent dans les métiers de terrain.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. L’apprentissage par immersion seule augmente les erreurs, l’isolement et l’exposition aux situations dangereuses.",
+          "Choix risqué. L’apprentissage par immersion seule peut créer du stress, des erreurs et une intégration inégale selon les personnes présentes.",
       },
     ],
   },
   {
-    id: "pauses-fatigue",
+    id: "recuperation-fatigue",
     tag: "pauses",
-    title: "La fatigue commence à se voir",
+    title: "Les temps de récupération disparaissent facilement",
     scene:
-      "Après plusieurs heures dans {place}, les gestes deviennent moins précis. Une personne souffle qu’elle n’a pas pris de pause, mais {moment} n’est pas terminé.",
-    qvct: "Enjeu QVCT : organiser la récupération est un levier de sécurité, de qualité de service et de prévention de l’usure.",
+      "Au fil de {moment}, {team} enchaîne les tâches. Les pauses sont prévues, mais elles sautent facilement lorsque l’activité s’accumule, les livraisons arrivent ou que certaines personnes compensent pour les autres.",
+    qvct: "Enjeu QVCT : la récupération fait partie de l’organisation du travail. Elle prévient la fatigue, les erreurs, les accidents et l’usure professionnelle.",
     choices: [
       {
         label:
-          "Réorganiser temporairement les postes pour permettre une pause courte et réelle.",
+          "Identifier les moments où chacun peut réellement récupérer, même brièvement, et les intégrer à l’organisation.",
         score: 100,
         level: "good",
         feedback:
-          "Bon réflexe terrain. Une pause courte mais effective peut éviter une erreur, une blessure ou une tension qui coûtera plus cher au collectif.",
+          "Bon réflexe. Une pause courte mais réelle vaut mieux qu’une pause théorique jamais prise. La récupération doit être organisée, pas seulement autorisée.",
       },
       {
         label:
-          "Proposer de tenir encore un peu, puis de faire une pause dès que le flux baisse.",
+          "Rappeler à chacun de prendre une pause quand il ou elle en ressent le besoin.",
         score: 60,
         level: "medium",
         feedback:
-          "Cela peut dépanner, mais attention à la pause qui disparaît. Sans décision claire, la récupération passe souvent après tout le reste.",
+          "L’intention est bonne, mais insuffisante. Dans les métiers du foodbusiness, beaucoup de personnes n’osent pas s’arrêter si l’organisation ne le rend pas possible.",
       },
       {
         label:
-          "Reporter la pause : le service client passe avant, l’équipe récupérera ensuite.",
+          "Laisser l’équipe gérer : dans ces métiers, chacun sait que les pauses dépendent de l’activité.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. La fatigue accumulée augmente les erreurs, les accidents et l’irritabilité, y compris face aux clients.",
+          "Choix risqué. Quand la récupération dépend seulement de la bonne volonté ou du moment disponible, elle disparaît souvent au détriment de la santé et de la qualité du travail.",
       },
     ],
   },
   {
-    id: "incivilite-client",
+    id: "communication-irritants",
     tag: "communication",
-    title: "Une tension client déborde sur l’équipe",
+    title: "Un irritant crée des tensions dans l’équipe",
     scene:
-      "Un client s’emporte. Le ton monte près de {place}. Une personne de {team} encaisse la remarque, continue à travailler, mais le climat se tend.",
-    qvct: "Enjeu QVCT : soutenir l’équipe face aux incivilités protège la santé mentale, la cohésion et la qualité de la relation client.",
+      "Dans {place}, un irritant revient régulièrement : information transmise trop tard, matériel déplacé, consigne différente selon les personnes, retard non anticipé ou remarque maladroite. Le climat se tend sans que le sujet soit vraiment traité.",
+    qvct: "Enjeu QVCT : traiter les irritants du quotidien améliore la coopération, la qualité du travail et la santé mentale des équipes.",
     choices: [
       {
         label:
-          "Intervenir calmement, poser un cadre au client, puis faire un court débrief avec la personne concernée.",
+          "Nommer le problème factuellement, écouter les personnes concernées et décider d’un ajustement concret à tester.",
         score: 100,
         level: "good",
         feedback:
-          "Très bon réflexe. Le manager protège le cadre de travail sans dramatiser, puis transforme l’incident en apprentissage collectif.",
+          "Très bon réflexe. La QVCT se joue souvent dans ces petits irritants répétés. Les traiter tôt évite qu’ils deviennent des conflits installés.",
       },
       {
         label:
-          "Laisser passer l’épisode, puis demander plus tard si tout va bien.",
+          "Attendre un moment plus calme pour en reparler avec les personnes concernées.",
         score: 60,
         level: "medium",
         feedback:
-          "L’intention est bonne, mais tardive. Sans cadre visible, l’équipe peut avoir l’impression que subir fait partie du métier.",
+          "Cela peut être pertinent, à condition de fixer un vrai moment. Sinon, le sujet risque d’être repoussé jusqu’à devenir une tension permanente.",
       },
       {
         label:
-          "Demander à l’équipe de rester professionnelle quoi qu’il arrive.",
+          "Ne pas trop s’attarder dessus : les tensions font partie du travail en équipe.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix fragile. Le professionnalisme ne doit pas signifier accepter l’incivilité sans soutien ni règle claire.",
+          "Choix risqué. Banaliser les tensions empêche d’améliorer le fonctionnement collectif et peut créer du désengagement ou de l’épuisement.",
       },
     ],
   },
   {
-    id: "presque-accident",
+    id: "risques-banalises",
     tag: "prevention",
-    title: "Un presque-accident est signalé",
+    title: "Un risque du quotidien est banalisé",
     scene:
-      "Dans {place}, quelqu’un manque de glisser ou de se blesser. Il n’y a pas d’arrêt, le service continue, mais plusieurs personnes ont vu la scène.",
-    qvct: "Enjeu QVCT : traiter les signaux faibles évite d’attendre l’accident pour agir.",
+      "Dans {place}, plusieurs situations semblent devenues normales : sol humide, gestes répétitifs, port de charges, matériel mal rangé, circulation difficile ou équipements utilisés par habitude. Personne n’est blessé, mais les signaux sont là.",
+    qvct: "Enjeu QVCT : la prévention ne concerne pas seulement les accidents graves. Elle commence par les risques ordinaires que l’on finit par ne plus voir.",
     choices: [
       {
         label:
-          "Sécuriser immédiatement la zone, identifier la cause et noter l’action à suivre.",
+          "Repérer le risque, chercher sa cause et décider d’une action simple : rangement, consigne, matériel, circulation ou organisation.",
         score: 100,
         level: "good",
         feedback:
-          "Excellent réflexe. Un presque-accident est une information précieuse : il permet d’agir avant qu’un dommage réel ne survienne.",
-      },
-      {
-        label: "Rappeler rapidement à tout le monde de faire attention.",
-        score: 60,
-        level: "medium",
-        feedback:
-          "Utile, mais insuffisant. La vigilance individuelle ne remplace pas une action sur la cause : sol, matériel, flux, rangement ou consigne.",
+          "Excellent réflexe. Les risques du quotidien sont souvent les plus importants à traiter, car ils se répètent et finissent par user les équipes.",
       },
       {
         label:
-          "Ne pas interrompre le service puisqu’il n’y a pas eu de blessure.",
+          "Faire un rappel général à la vigilance et demander à chacun de faire attention.",
+        score: 60,
+        level: "medium",
+        feedback:
+          "Utile, mais limité. La vigilance individuelle ne suffit pas si l’organisation, l’espace ou le matériel créent toujours le même risque.",
+      },
+      {
+        label:
+          "Considérer que ce sont les contraintes normales des métiers de bouche et du terrain.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. Ignorer un signal faible laisse le danger en place et banalise les alertes terrain.",
+          "Choix risqué. Dire que cela fait partie du métier revient à accepter des risques évitables et à retarder les actions de prévention.",
       },
     ],
   },
   {
-    id: "absence-planning",
+    id: "planning-charge-reelle",
     tag: "planning",
-    title: "Une absence déséquilibre l’organisation",
+    title: "Le planning ne reflète pas toujours la charge réelle",
     scene:
-      "Une absence tombe au mauvais moment. {team} sait que {moment} sera plus tendu que prévu, et chacun commence à compenser à sa manière.",
-    qvct: "Enjeu QVCT : anticiper la surcharge limite l’épuisement et évite que la performance repose seulement sur l’effort individuel.",
+      "Sur le papier, l’organisation semble tenir. Mais dans la réalité, {team} doit absorber des commandes supplémentaires, des livraisons, des absences, des pics d’accueil, de la préparation, du nettoyage ou des tâches administratives peu visibles.",
+    qvct: "Enjeu QVCT : un planning efficace doit tenir compte du travail réel, pas seulement des horaires ou des postes prévus.",
     choices: [
       {
         label:
-          "Prioriser les tâches, répartir la charge, identifier ce qui peut être reporté et prévenir l’équipe du plan.",
+          "Comparer régulièrement le planning prévu avec la charge réelle et ajuster les priorités, les renforts ou les tâches reportables.",
         score: 100,
         level: "good",
         feedback:
-          "Très bon choix. La surcharge se pilote mieux quand les arbitrages sont explicites et partagés.",
+          "Très bon choix. La charge réelle est souvent plus large que ce qui est visible. L’analyser permet d’éviter que l’équilibre repose toujours sur les mêmes personnes.",
       },
       {
         label:
-          "Demander à l’équipe de s’entraider davantage jusqu’à la fin du service.",
+          "Demander à l’équipe de signaler les journées trop lourdes pour ajuster plus tard si cela se répète.",
         score: 60,
         level: "medium",
         feedback:
-          "L’entraide est précieuse, mais elle doit être organisée. Sinon, elle repose souvent sur les mêmes personnes.",
+          "C’est une première étape utile, mais elle doit déboucher sur un suivi concret. Sinon, les remontées risquent de ne pas produire de changement.",
       },
       {
-        label: "Compenser en accélérant et en réduisant les temps de pause.",
+        label:
+          "Se baser sur le planning prévu : si tout est couvert, l’organisation est suffisante.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. Réduire la récupération pour absorber la charge peut créer de l’usure, des erreurs et des tensions.",
+          "Choix risqué. Un planning peut sembler complet tout en masquant une surcharge réelle, des interruptions constantes ou des tâches invisibles.",
       },
     ],
   },
   {
-    id: "duerp-retour",
+    id: "amelioration-continue",
     tag: "duerp",
-    title: "Le même problème revient régulièrement",
+    title: "Les problèmes remontent, mais peu de choses changent",
     scene:
-      "Après plusieurs services dans {place}, le même irritant revient : circulation difficile, matériel mal placé, consigne floue ou tension répétée. Tout le monde le connaît, mais rien ne change vraiment.",
-    qvct: "Enjeu QVCT : relier les retours terrain au plan d’action et au DUERP permet de passer du constat à la prévention durable.",
+      "Après plusieurs semaines dans {place}, les mêmes sujets reviennent : fatigue, matériel peu adapté, circulation difficile, manque d’information, tension entre postes ou difficulté à intégrer les nouveaux. Tout le monde connaît le problème, mais il reste dans les conversations.",
+    qvct: "Enjeu QVCT : les remontées terrain doivent devenir des actions suivies. C’est aussi ce qui permet d’alimenter le DUERP et le plan de prévention.",
     choices: [
       {
         label:
-          "Organiser un court retour terrain, choisir une action concrète, la suivre et l’intégrer au plan de prévention.",
+          "Choisir un sujet prioritaire, définir une action simple, fixer un responsable de suivi et vérifier si l’amélioration fonctionne.",
         score: 100,
         level: "good",
         feedback:
-          "Très bon réflexe. La QVCT devient concrète quand les irritants fréquents produisent des décisions visibles et suivies.",
+          "Très bon réflexe. La QVCT devient concrète quand les problèmes observés produisent des décisions visibles, testées et suivies.",
       },
       {
         label:
-          "Noter le sujet pour une réunion ultérieure quand la période sera plus calme.",
+          "Noter les sujets pour une réunion ultérieure ou une période plus calme.",
         score: 60,
         level: "medium",
         feedback:
-          "C’est mieux que rien, mais le risque est d’enterrer le sujet. Il faut au moins une première action simple ou une date de suivi.",
+          "C’est mieux que rien, mais attention au sujet qui disparaît. Il faut au moins une date, une première action ou une personne chargée du suivi.",
       },
       {
         label:
-          "Considérer que ces contraintes font partie du métier en période de rush.",
+          "Considérer que ces problèmes sont connus et qu’ils font partie du fonctionnement habituel.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. Banaliser les irritants installe l’usure et empêche l’amélioration réelle des conditions de travail.",
+          "Choix risqué. Quand les irritants deviennent normaux, ils installent l’usure, la résignation et empêchent l’amélioration réelle des conditions de travail.",
       },
     ],
   },
@@ -794,6 +799,29 @@ function showFormErrors(errors) {
 
 function isValidEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+const privacyDialog = document.querySelector("#privacy-dialog");
+const openPrivacyButton = document.querySelector("[data-open-privacy]");
+const closePrivacyButton = document.querySelector("[data-close-privacy]");
+
+if (privacyDialog && openPrivacyButton && closePrivacyButton) {
+  openPrivacyButton.addEventListener("click", () => {
+    privacyDialog.showModal();
+    closePrivacyButton.focus();
+  });
+
+  closePrivacyButton.addEventListener("click", () => {
+    privacyDialog.close();
+    openPrivacyButton.focus();
+  });
+
+  privacyDialog.addEventListener("click", (event) => {
+    if (event.target === privacyDialog) {
+      privacyDialog.close();
+      openPrivacyButton.focus();
+    }
+  });
 }
 
 init();

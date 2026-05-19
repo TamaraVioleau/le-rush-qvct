@@ -887,3 +887,118 @@ select[aria-invalid="true"] {
 #checklist {
   scroll-margin-top: 6rem;
 }
+
+.privacy-link {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--secondary);
+  cursor: pointer;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+
+.privacy-link:hover {
+  color: var(--primary-dark);
+}
+
+.privacy-dialog {
+  width: min(100% - 2rem, 42rem);
+  max-height: 85vh;
+  border: 0;
+  border-radius: var(--radius-lg);
+  padding: 0;
+  background: transparent;
+  color: var(--text);
+}
+
+.privacy-dialog::backdrop {
+  background: rgba(38, 38, 38, 0.55);
+}
+
+.privacy-dialog-content {
+  position: relative;
+  overflow: auto;
+  max-height: 85vh;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.25rem, 4vw, 2rem);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.privacy-dialog-content h3 {
+  padding-right: 2.5rem;
+  font-size: clamp(1.45rem, 4vw, 2rem);
+}
+
+.privacy-dialog-content p {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.privacy-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: grid;
+  width: 2.25rem;
+  height: 2.25rem;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 999rem;
+  background: #ffffff;
+  color: var(--text);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.privacy-close:hover {
+  background: #f8f8f8;
+}
+
+.privacy-rights {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.privacy-rights h4 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.08rem;
+}
+
+.privacy-rights p {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+.privacy-rights address {
+  margin-top: 1rem;
+  border-left: 0.28rem solid var(--primary);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  background: #f8f8f8;
+  color: var(--muted);
+  font-style: normal;
+  font-size: 0.96rem;
+}
+
+.privacy-rights address strong,
+.privacy-rights p strong {
+  color: var(--text);
+}
+
+.privacy-rights a {
+  color: var(--secondary);
+  font-weight: 750;
+  text-underline-offset: 0.22em;
+}
+
+.privacy-rights a:hover {
+  color: var(--primary-dark);
+}
