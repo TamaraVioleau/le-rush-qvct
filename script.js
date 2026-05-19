@@ -715,7 +715,7 @@ function handleLeadSubmit(event) {
     .then(() => {
       dom.leadForm.reset();
       dom.formStatus.textContent =
-        "Merci, votre demande a bien été prise en compte. La checklist pourra vous être transmise par l’équipe After All.";
+        "Merci, votre demande a bien été prise en compte. Vous recevrez prochainement la newsletter Zest’us d’After All.";
     })
     .catch(() => {
       dom.formErrors.hidden = false;
@@ -758,9 +758,7 @@ function validateLeadForm() {
   setInvalidState(consent, !consent.checked);
 
   if (!consent.checked) {
-    errors.push(
-      "Le consentement est obligatoire pour recevoir la checklist et être recontacté.",
-    );
+    errors.push("Le consentement est obligatoire pour recevoir la newsletter.");
   }
 
   return errors;
