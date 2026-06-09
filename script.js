@@ -465,7 +465,7 @@ function renderQuestion() {
   dom.nextQuestion.hidden = true;
   dom.nextQuestion.textContent =
     state.currentQuestionIndex === questions.length - 1
-      ? "Voir mon diagnostic"
+      ? "Voir votre diagnostic"
       : "Continuer";
 
   dom.choices.innerHTML = "";
@@ -597,7 +597,7 @@ function buildSynthesis() {
     actions:
       actions.length > 0
         ? actions
-        : [actionMap.organisation, actionMap.communication, actionMap.duerp],
+        : [actionMap.recrutement, actionMap.onboarding, actionMap.turnover],
   };
 }
 
@@ -662,8 +662,18 @@ function applySectorTokens(text, sector) {
 }
 
 function syncLeadSector(sectorKey) {
-  if (!dom.leadSector || !sectors[sectorKey]) return;
-  dom.leadSector.value = sectors[sectorKey].label;
+  if (!dom.leadSector) return;
+
+  const googleFormSectorMap = {
+    restaurant: "Restaurant / brasserie",
+    hotel: "Hôtellerie",
+    bar: "Café / bar",
+    collective: "Restauration collective",
+    rapide: "Restauration rapide",
+    autre: "Autre établissement CHR",
+  };
+
+  dom.leadSector.value = googleFormSectorMap[sectorKey] || "";
 }
 
 function resetGame() {
@@ -734,6 +744,7 @@ function validateLeadForm() {
     ["lastName", "Le nom est obligatoire."],
     ["company", "L’établissement est obligatoire."],
     ["role", "La fonction est obligatoire."],
+    ["phone", "Le téléphone est obligatoire."],
     ["leadSector", "Le type d’établissement est obligatoire."],
     ["email", "L’email est obligatoire."],
   ];
