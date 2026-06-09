@@ -56,268 +56,268 @@ const sectors = {
 };
 
 const tagLabels = {
-  organisation: "Organisation réelle du travail",
-  integration: "Accueil, transmission et intégration",
-  pauses: "Récupération, rythme et fatigue",
-  communication: "Communication, coopération et climat d’équipe",
-  prevention: "Prévention des risques professionnels",
-  planning: "Planning, charge et équilibre de l’activité",
-  duerp: "Remontées terrain, DUERP et amélioration continue",
+  recrutement: "Recrutement et attractivité",
+  selection: "Sécurisation du recrutement",
+  onboarding: "Accueil et intégration",
+  autoformation: "Autoformation terrain",
+  turnover: "Prévention du turnover",
+  fidelisation: "Fidélisation et engagement",
+  pilotage: "Suivi RH et amélioration continue",
 };
 
 const actionMap = {
-  organisation:
-    "Clarifier le fonctionnement quotidien : rôles, priorités, relais possibles, points de vigilance et règles communes.",
-  integration:
-    "Prévoir un parcours d’accueil simple : binôme, consignes essentielles, points de repère et temps de questions identifié.",
-  pauses:
-    "Rendre les temps de récupération visibles dans l’organisation, même courts, pour prévenir la fatigue et les erreurs.",
-  communication:
-    "Installer un rituel d’échange court et régulier pour traiter les irritants avant qu’ils ne deviennent des tensions.",
-  prevention:
-    "Transformer les risques du quotidien en actions concrètes : rangement, matériel, gestes, circulation, consignes et suivi.",
-  planning:
-    "Comparer régulièrement le planning prévu avec la charge réelle pour ajuster les effectifs, les priorités et les temps de récupération.",
-  duerp:
-    "Faire remonter les situations récurrentes dans le plan d’action et le DUERP afin de passer du constat à l’amélioration durable.",
+  recrutement:
+    "Clarifier vos offres d’emploi : contraintes réelles, horaires, rythme, missions, avantages et conditions d’intégration.",
+  selection:
+    "Structurer vos entretiens avec une grille simple : compétences attendues, contraintes du poste, disponibilité, motivation et points de vigilance.",
+  onboarding:
+    "Mettre en place un parcours d’accueil court : checklist du premier jour, binôme référent, consignes prioritaires et point de suivi.",
+  autoformation:
+    "Créer des supports d’autoformation simples : fiches gestes métier, QR codes, mini-vidéos, rappels hygiène, sécurité et organisation.",
+  turnover:
+    "Identifier les causes de départ : charge réelle, planning, intégration, reconnaissance, ambiance, management et perspectives d’évolution.",
+  fidelisation:
+    "Renforcer les leviers de fidélisation : reconnaissance, progression, polyvalence accompagnée, planning lisible et temps d’échange réguliers.",
+  pilotage:
+    "Suivre quelques indicateurs RH simples : départs précoces, absences, retours d’intégration, irritants récurrents et actions correctives.",
 };
 
 const questions = [
   {
-    id: "organisation-quotidienne",
-    tag: "organisation",
-    title: "L’organisation du travail au quotidien",
+    id: "recrutement-offre-claire",
+    tag: "recrutement",
+    title: "Votre offre d’emploi attire-t-elle les bons profils ?",
     scene:
-      "Dans {place}, {team} commence {moment}. Les tâches sont connues, mais la répartition dépend beaucoup des habitudes. Certaines consignes restent implicites et tout le monde ne sait pas toujours à qui s’adresser.",
-    qvct: "Enjeu QVCT : une organisation claire réduit la charge mentale, limite les malentendus et aide chacun à travailler dans de meilleures conditions.",
+      "Dans {place}, vous cherchez à renforcer {team}. Les candidatures sont rares, les profils ne correspondent pas toujours et certains candidats découvrent les contraintes du poste trop tard.",
+    qvct: "Enjeu QVCT : un recrutement clair limite les malentendus, sécurise l’arrivée des nouveaux et réduit le risque de départ rapide.",
     choices: [
       {
         label:
-          "Clarifier les rôles, les priorités, les points de vigilance et les relais possibles dès le début de la journée.",
+          "Rédiger une offre transparente avec les missions, les horaires, le rythme, les contraintes réelles et les avantages concrets.",
         score: 100,
         level: "good",
         feedback:
-          "Bon réflexe. La QVCT commence par une organisation lisible : chacun sait ce qu’il doit faire, avec qui coopérer et quand demander de l’aide.",
+          "Très bon réflexe. Plus votre offre est claire, plus vous attirez des candidats capables de se projeter réellement dans le poste.",
       },
       {
         label:
-          "Laisser l’équipe s’organiser naturellement, puis intervenir seulement si un problème apparaît.",
+          "Mettre surtout en avant l’ambiance, la polyvalence et les opportunités, puis détailler les contraintes en entretien.",
         score: 60,
         level: "medium",
         feedback:
-          "Cela peut fonctionner avec une équipe expérimentée, mais cela reste fragile. Quand tout repose sur l’habitude, les nouveaux, les renforts ou les personnes fatiguées peuvent vite être perdues.",
+          "C’est utile, mais incomplet. Si les contraintes arrivent trop tard, vous risquez de créer une déception dès les premières semaines.",
       },
       {
         label:
-          "Considérer que chacun connaît son poste et que l’organisation se réglera au fil de la journée.",
+          "Publier une annonce courte pour recevoir plus vite des candidatures et préciser les détails après sélection.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. L’implicite crée de la charge mentale, des erreurs, des tensions et une dépendance aux personnes les plus expérimentées.",
+          "Choix risqué. Une annonce trop vague peut générer des candidatures peu adaptées et fragiliser tout le processus de recrutement.",
       },
     ],
   },
   {
-    id: "integration-reperes",
-    tag: "integration",
-    title: "Une nouvelle personne prend ses repères",
+    id: "selection-entretien",
+    tag: "selection",
+    title: "Votre entretien sécurise-t-il vraiment le recrutement ?",
     scene:
-      "Une personne récemment arrivée rejoint {team}. Elle observe, hésite sur certaines pratiques, ne connaît pas encore les règles importantes et n’ose pas toujours solliciter {manager}.",
-    qvct: "Enjeu QVCT : une intégration structurée protège la personne, sécurise l’activité et évite que l’apprentissage repose uniquement sur l’observation.",
+      "Vous recevez un candidat motivé pour rejoindre {team}. L’échange est positif, mais vous devez vérifier si le poste, le rythme, les horaires et les pratiques terrain correspondent réellement à ses attentes.",
+    qvct: "Enjeu QVCT : un entretien structuré permet d’éviter les recrutements fragiles, les incompréhensions et les départs précoces.",
     choices: [
       {
         label:
-          "Prévoir un binôme, transmettre les consignes essentielles et organiser un court point de suivi en fin de journée.",
+          "Utiliser une grille d’entretien simple pour vérifier les compétences, les contraintes acceptées, les motivations et les besoins d’accompagnement.",
         score: 100,
         level: "good",
         feedback:
-          "Très bon choix. Un accueil clair limite le stress, les erreurs et le sentiment d’isolement. C’est un levier QVCT très concret.",
+          "Très bon choix. Vous sécurisez votre décision et vous donnez au candidat une vision plus juste du poste.",
       },
       {
         label:
-          "Lui confier d’abord des tâches simples, puis compléter les explications quand l’activité sera plus calme.",
+          "Mener un entretien libre pour créer une relation naturelle, puis décider selon votre ressenti.",
         score: 60,
         level: "medium",
         feedback:
-          "C’est protecteur, mais incomplet. Les tâches simples ne remplacent pas les repères essentiels : sécurité, priorités, personnes ressources et règles de fonctionnement.",
+          "Le ressenti compte, mais il ne suffit pas. Sans critères communs, vous pouvez passer à côté de points essentiels.",
       },
       {
         label:
-          "La laisser apprendre en observant les autres, comme cela se fait souvent dans les métiers de terrain.",
+          "Recruter rapidement si le candidat semble disponible et motivé, car le besoin terrain est urgent.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. L’apprentissage par immersion seule peut créer du stress, des erreurs et une intégration inégale selon les personnes présentes.",
+          "Choix risqué. L’urgence peut conduire à un mauvais alignement entre le poste, la personne et les conditions réelles de travail.",
       },
     ],
   },
   {
-    id: "recuperation-fatigue",
-    tag: "pauses",
-    title: "Les temps de récupération disparaissent facilement",
+    id: "onboarding-premier-jour",
+    tag: "onboarding",
+    title: "Le premier jour donne-t-il assez de repères ?",
     scene:
-      "Au fil de {moment}, {team} enchaîne les tâches. Les pauses sont prévues, mais elles sautent facilement lorsque l’activité s’accumule, les livraisons arrivent ou que certaines personnes compensent pour les autres.",
-    qvct: "Enjeu QVCT : la récupération fait partie de l’organisation du travail. Elle prévient la fatigue, les erreurs, les accidents et l’usure professionnelle.",
+      "Une nouvelle personne arrive dans {team}. Elle découvre {place}, les collègues, les règles implicites, les gestes attendus et les priorités du poste.",
+    qvct: "Enjeu QVCT : un onboarding structuré réduit le stress, les erreurs, l’isolement et le risque de rupture pendant la période d’essai.",
     choices: [
       {
         label:
-          "Identifier les moments où chacun peut réellement récupérer, même brièvement, et les intégrer à l’organisation.",
+          "Prévoir une checklist d’accueil, un binôme référent, les consignes prioritaires et un court point de suivi en fin de journée.",
         score: 100,
         level: "good",
         feedback:
-          "Bon réflexe. Une pause courte mais réelle vaut mieux qu’une pause théorique jamais prise. La récupération doit être organisée, pas seulement autorisée.",
+          "Excellent réflexe. Vous donnez à la personne des repères concrets et vous évitez qu’elle apprenne uniquement par observation.",
       },
       {
         label:
-          "Rappeler à chacun de prendre une pause quand il ou elle en ressent le besoin.",
+          "Présenter rapidement l’équipe et le poste, puis laisser la personne apprendre progressivement sur le terrain.",
         score: 60,
         level: "medium",
         feedback:
-          "L’intention est bonne, mais insuffisante. Dans les métiers du foodbusiness, beaucoup de personnes n’osent pas s’arrêter si l’organisation ne le rend pas possible.",
+          "C’est un début, mais cela reste fragile. Le terrain forme mieux quand il est accompagné par des repères clairs.",
       },
       {
         label:
-          "Laisser l’équipe gérer : dans ces métiers, chacun sait que les pauses dépendent de l’activité.",
+          "La placer directement en situation réelle pour qu’elle comprenne vite le rythme du métier.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. Quand la récupération dépend seulement de la bonne volonté ou du moment disponible, elle disparaît souvent au détriment de la santé et de la qualité du travail.",
+          "Choix risqué. Une immersion brutale peut créer du stress, des erreurs et une envie de partir rapidement.",
       },
     ],
   },
   {
-    id: "communication-irritants",
-    tag: "communication",
-    title: "Un irritant crée des tensions dans l’équipe",
+    id: "autoformation-terrain",
+    tag: "autoformation",
+    title: "Vos équipes peuvent-elles se former facilement ?",
     scene:
-      "Dans {place}, un irritant revient régulièrement : information transmise trop tard, matériel déplacé, consigne différente selon les personnes, retard non anticipé ou remarque maladroite. Le climat se tend sans que le sujet soit vraiment traité.",
-    qvct: "Enjeu QVCT : traiter les irritants du quotidien améliore la coopération, la qualité du travail et la santé mentale des équipes.",
+      "Dans {place}, certaines consignes doivent être répétées souvent : gestes métier, hygiène, sécurité, rangement, procédures, priorités ou utilisation du matériel.",
+    qvct: "Enjeu QVCT : l’autoformation facilite la transmission, sécurise les pratiques et évite que toute la formation repose sur les mêmes personnes.",
     choices: [
       {
         label:
-          "Nommer le problème factuellement, écouter les personnes concernées et décider d’un ajustement concret à tester.",
+          "Créer des supports courts et accessibles : fiches pratiques, QR codes, mini-vidéos, rappels visuels et parcours d’autoformation.",
         score: 100,
         level: "good",
         feedback:
-          "Très bon réflexe. La QVCT se joue souvent dans ces petits irritants répétés. Les traiter tôt évite qu’ils deviennent des conflits installés.",
+          "Très bon choix. Vous rendez la formation plus autonome, plus régulière et moins dépendante de la disponibilité du manager.",
       },
       {
         label:
-          "Attendre un moment plus calme pour en reparler avec les personnes concernées.",
+          "Prévoir des rappels oraux réguliers pendant les moments plus calmes.",
         score: 60,
         level: "medium",
         feedback:
-          "Cela peut être pertinent, à condition de fixer un vrai moment. Sinon, le sujet risque d’être repoussé jusqu’à devenir une tension permanente.",
+          "C’est utile, mais fragile. Les rappels oraux disparaissent facilement quand l’activité augmente ou que les équipes changent.",
       },
       {
         label:
-          "Ne pas trop s’attarder dessus : les tensions font partie du travail en équipe.",
+          "Compter sur les personnes expérimentées pour transmettre les bonnes pratiques aux nouveaux.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. Banaliser les tensions empêche d’améliorer le fonctionnement collectif et peut créer du désengagement ou de l’épuisement.",
+          "Choix risqué. Sans support commun, chaque personne transmet à sa façon et les pratiques peuvent devenir inégales.",
       },
     ],
   },
   {
-    id: "risques-banalises",
-    tag: "prevention",
-    title: "Un risque du quotidien est banalisé",
+    id: "turnover-departs-precoces",
+    tag: "turnover",
+    title: "Comprenez-vous pourquoi les personnes partent ?",
     scene:
-      "Dans {place}, plusieurs situations semblent devenues normales : sol humide, gestes répétitifs, port de charges, matériel mal rangé, circulation difficile ou équipements utilisés par habitude. Personne n’est blessé, mais les signaux sont là.",
-    qvct: "Enjeu QVCT : la prévention ne concerne pas seulement les accidents graves. Elle commence par les risques ordinaires que l’on finit par ne plus voir.",
+      "Depuis plusieurs mois, vous constatez des départs rapides dans {team}. Certains salariés quittent l’établissement après quelques semaines, parfois sans expliquer clairement leur décision.",
+    qvct: "Enjeu QVCT : analyser le turnover permet de repérer les causes réelles : intégration, planning, charge, reconnaissance, ambiance ou management.",
     choices: [
       {
         label:
-          "Repérer le risque, chercher sa cause et décider d’une action simple : rangement, consigne, matériel, circulation ou organisation.",
+          "Analyser les départs avec quelques indicateurs simples et recueillir les retours des personnes concernées quand c’est possible.",
         score: 100,
         level: "good",
         feedback:
-          "Excellent réflexe. Les risques du quotidien sont souvent les plus importants à traiter, car ils se répètent et finissent par user les équipes.",
+          "Très bon réflexe. Vous transformez le turnover en information utile pour corriger ce qui fragilise l’équipe.",
       },
       {
         label:
-          "Faire un rappel général à la vigilance et demander à chacun de faire attention.",
+          "Observer si les départs se répètent avant de modifier votre organisation.",
         score: 60,
         level: "medium",
         feedback:
-          "Utile, mais limité. La vigilance individuelle ne suffit pas si l’organisation, l’espace ou le matériel créent toujours le même risque.",
+          "C’est prudent, mais incomplet. Si vous attendez trop, les mêmes causes peuvent continuer à produire les mêmes départs.",
       },
       {
         label:
-          "Considérer que ce sont les contraintes normales des métiers de bouche et du terrain.",
+          "Considérer que le turnover fait partie des réalités normales du foodbusiness.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. Dire que cela fait partie du métier revient à accepter des risques évitables et à retarder les actions de prévention.",
+          "Choix risqué. Le turnover est fréquent, mais il n’est pas une fatalité. Le banaliser empêche d’agir sur les causes évitables.",
       },
     ],
   },
   {
-    id: "planning-charge-reelle",
-    tag: "planning",
-    title: "Le planning ne reflète pas toujours la charge réelle",
+    id: "fidelisation-engagement",
+    tag: "fidelisation",
+    title: "Votre organisation donne-t-elle envie de rester ?",
     scene:
-      "Sur le papier, l’organisation semble tenir. Mais dans la réalité, {team} doit absorber des commandes supplémentaires, des livraisons, des absences, des pics d’accueil, de la préparation, du nettoyage ou des tâches administratives peu visibles.",
-    qvct: "Enjeu QVCT : un planning efficace doit tenir compte du travail réel, pas seulement des horaires ou des postes prévus.",
+      "Dans {place}, {team} tient le rythme, mais plusieurs signaux apparaissent : fatigue, irritants répétés, manque de reconnaissance, planning difficile à anticiper ou sentiment de ne pas progresser.",
+    qvct: "Enjeu QVCT : fidéliser ne dépend pas seulement du salaire. Les conditions de travail, la reconnaissance et les perspectives jouent un rôle majeur.",
     choices: [
       {
         label:
-          "Comparer régulièrement le planning prévu avec la charge réelle et ajuster les priorités, les renforts ou les tâches reportables.",
+          "Identifier les leviers de fidélisation : reconnaissance, planning plus lisible, progression, polyvalence accompagnée et temps d’échange réguliers.",
         score: 100,
         level: "good",
         feedback:
-          "Très bon choix. La charge réelle est souvent plus large que ce qui est visible. L’analyser permet d’éviter que l’équilibre repose toujours sur les mêmes personnes.",
+          "Excellent choix. Vous agissez sur ce qui aide les équipes à se projeter et à rester engagées dans la durée.",
       },
       {
         label:
-          "Demander à l’équipe de signaler les journées trop lourdes pour ajuster plus tard si cela se répète.",
+          "Faire des efforts ponctuels sur l’ambiance et remercier davantage l’équipe pendant les périodes difficiles.",
         score: 60,
         level: "medium",
         feedback:
-          "C’est une première étape utile, mais elle doit déboucher sur un suivi concret. Sinon, les remontées risquent de ne pas produire de changement.",
+          "C’est positif, mais insuffisant si les problèmes d’organisation restent les mêmes. La reconnaissance doit s’accompagner d’actions concrètes.",
       },
       {
         label:
-          "Se baser sur le planning prévu : si tout est couvert, l’organisation est suffisante.",
+          "Se concentrer sur l’activité : si l’équipe est professionnelle, elle saura s’adapter aux contraintes.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. Un planning peut sembler complet tout en masquant une surcharge réelle, des interruptions constantes ou des tâches invisibles.",
+          "Choix risqué. Une équipe peut tenir un temps, mais l’adaptation permanente finit souvent par créer de l’usure et du désengagement.",
       },
     ],
   },
   {
-    id: "amelioration-continue",
-    tag: "duerp",
-    title: "Les problèmes remontent, mais peu de choses changent",
+    id: "pilotage-rh-qvct",
+    tag: "pilotage",
+    title: "Vos actions RH sont-elles suivies dans le temps ?",
     scene:
-      "Après plusieurs semaines dans {place}, les mêmes sujets reviennent : fatigue, matériel peu adapté, circulation difficile, manque d’information, tension entre postes ou difficulté à intégrer les nouveaux. Tout le monde connaît le problème, mais il reste dans les conversations.",
-    qvct: "Enjeu QVCT : les remontées terrain doivent devenir des actions suivies. C’est aussi ce qui permet d’alimenter le DUERP et le plan de prévention.",
+      "Vous avez déjà identifié plusieurs sujets dans {place} : recrutement difficile, intégration inégale, formation informelle, départs rapides ou irritants récurrents. Mais tout ne se transforme pas encore en actions suivies.",
+    qvct: "Enjeu QVCT : le pilotage permet de passer du constat à l’action, puis de vérifier si les outils mis en place améliorent vraiment le quotidien.",
     choices: [
       {
         label:
-          "Choisir un sujet prioritaire, définir une action simple, fixer un responsable de suivi et vérifier si l’amélioration fonctionne.",
+          "Choisir trois indicateurs simples, définir des actions prioritaires, désigner un responsable de suivi et faire un bilan régulier.",
         score: 100,
         level: "good",
         feedback:
-          "Très bon réflexe. La QVCT devient concrète quand les problèmes observés produisent des décisions visibles, testées et suivies.",
+          "Très bon réflexe. Vous rendez vos actions visibles, mesurables et plus faciles à ajuster dans le temps.",
       },
       {
         label:
-          "Noter les sujets pour une réunion ultérieure ou une période plus calme.",
+          "Noter les problèmes au fil de l’eau et les traiter quand une période plus calme se présente.",
         score: 60,
         level: "medium",
         feedback:
-          "C’est mieux que rien, mais attention au sujet qui disparaît. Il faut au moins une date, une première action ou une personne chargée du suivi.",
+          "C’est mieux que rien, mais cela risque de repousser les sujets importants. Un suivi simple vaut mieux qu’un plan parfait jamais lancé.",
       },
       {
         label:
-          "Considérer que ces problèmes sont connus et qu’ils font partie du fonctionnement habituel.",
+          "Gérer les problèmes au cas par cas, selon les urgences du moment.",
         score: 20,
         level: "risky",
         feedback:
-          "Choix risqué. Quand les irritants deviennent normaux, ils installent l’usure, la résignation et empêchent l’amélioration réelle des conditions de travail.",
+          "Choix risqué. Le cas par cas peut dépanner, mais il ne règle pas les causes profondes du recrutement fragile, du turnover ou de l’intégration inégale.",
       },
     ],
   },
@@ -621,27 +621,25 @@ function calculateScore(answers) {
 function getScoreLevel(score) {
   if (score <= 45) {
     return {
-      title:
-        "Zone de vigilance : vos équipes tiennent, mais le système fatigue.",
+      title: "Zone de vigilance : votre parcours RH fragilise vos équipes.",
       message:
-        "Votre diagnostic indique que plusieurs décisions reposent encore sur l’urgence, l’effort individuel ou l’implicite. La priorité est de structurer quelques règles simples pour protéger l’équipe et stabiliser l’activité.",
+        "Votre diagnostic montre que le recrutement, l’intégration ou la fidélisation reposent encore trop sur l’urgence, l’oral ou l’adaptation individuelle. La priorité est de mettre en place quelques outils simples pour sécuriser vos pratiques.",
     };
   }
 
   if (score <= 75) {
     return {
       title:
-        "Bases solides : vous avez de bons réflexes, mais certains points doivent être structurés.",
+        "Bases solides : vos réflexes sont présents, mais doivent être structurés.",
       message:
-        "Vos choix montrent une culture terrain déjà présente. Pour progresser, l’enjeu est de transformer les bons réflexes en pratiques régulières, partagées et suivies.",
+        "Vos choix montrent une attention réelle aux équipes. Pour progresser, l’enjeu est de transformer ces bons réflexes en outils concrets : grille d’entretien, checklist d’accueil, supports d’autoformation et suivi du turnover.",
     };
   }
 
   return {
-    title:
-      "Dynamique maîtrisée : vos pratiques soutiennent déjà la QVCT, pensez à les pérenniser.",
+    title: "Dynamique maîtrisée : vos pratiques RH soutiennent déjà la QVCT.",
     message:
-      "Votre diagnostic montre des décisions favorables à la prévention, à l’organisation et au soutien des équipes. La prochaine étape consiste à documenter ces pratiques et à les faire vivre dans la durée.",
+      "Votre diagnostic montre une organisation favorable au recrutement, à l’intégration et à la fidélisation. La prochaine étape consiste à formaliser ces pratiques pour les rendre durables, transmissibles et faciles à suivre.",
   };
 }
 
